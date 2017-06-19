@@ -1,0 +1,105 @@
+model CCR_Dual_Model
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+parameters
+	FILE_DATA =  "C:/Users/ConsigliaA/Desktop/tesiDaniele/tabelle/Test4-input.Output/input-output.txt"
+	k = 11
+end-parameters
+
+declarations
+	
+	s:integer
+	m:integer
+	n:integer
+	
+end-declarations
+
+initializations from FILE_DATA
+	s
+	m
+	n
+end-initializations
+
+declarations
+	
+	row1 = 1..m
+	row2 = 1..s
+	col = 1..n
+	
+	teta: mpvar
+	lamda: array( col ) of mpvar
+	s_piu: array(row2) of mpvar
+	s_meno: array(row1) of mpvar
+	
+	y:  array( row2,col ) of integer
+	x:  array( row1,col ) of integer
+	
+end-declarations
+
+initializations from "mmsheet.xls:Input-Output.xls"
+	y as "noindex;Output"
+	x as "noindex;Input"
+end-initializations
+
+forall(j in row1) do
+	v1(j):= teta*x(j,k)>= sum(i in col) x(j, i)*lamda(i)
+end-do	
+
+forall(j in row2) do
+	v2(j):= sum(i in col)y(j,i)*lamda(i)>=y(j,k)
+end-do
+
+forall(j in col) do 
+	v3(j):= lamda(j) >= 0
+end-do
+
+minimize(teta)
+
+if(getsol(teta)=1) then
+	
+	forall(i in row1) do
+		w1(i):= s_meno(i) = teta*x(i,k) - sum(j in col)x(i,j)*lamda(j)
+	end-do
+	
+	forall(i in row2) do
+		w2(i):= s_piu(i) = sum(j in col)y(i,j)*lamda(j) - y(i,k)
+	end-do
+	
+w:= sum(i in row1) s_meno(i) + sum(i in row2) s_piu(i)	
+maximize(w)
+
+	fopen("CCR_Dual_Model_Slack.txt",F_OUTPUT+F_APPEND)
+	
+	write('s_meno_',k,'= { ')
+	forall(i in row1)
+	write(getsol(s_meno(i)),' ')
+	write('}')
+	writeln
+	
+	write('s_piu_',k,'= { ')
+	forall(i in row2)
+	write(getsol(s_piu(i)),' ')
+	write('}')
+	writeln
+	
+	fclose(F_OUTPUT)
+end-if	
+
+
+!STAMPASOL
+fopen("CCR_Dual_Model_Lamda.txt",F_OUTPUT+F_APPEND)
+
+write('lamda_',k,'= { ')
+forall(i in col)
+write(getsol(lamda(i)),' ')
+write('}')
+writeln
+
+fclose(F_OUTPUT)
+
+fopen("CCR_Dual_Model_Solution.txt",F_OUTPUT+F_APPEND)
+writeln( 'teta',k,'= ', getsol(teta))
+
+fclose(F_OUTPUT)
+
+end-model

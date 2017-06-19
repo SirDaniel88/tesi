@@ -1,0 +1,94 @@
+model BND_Output_Oriented
+uses "mmxprs";
+
+parameters
+	FILE_DATA =  "C:/Users/ConsigliaA/Desktop/tesiDaniele/datiEsercizio1.txt"
+	k = 4
+end-parameters
+
+declarations
+	
+	s_c:integer
+	m_c:integer
+	s_n:integer
+	m_n:integer
+	n:integer
+	L:real
+	U:real
+	
+end-declarations
+
+initializations from FILE_DATA
+	s_c
+	m_c
+	s_n
+	m_n
+	n
+	L
+	U
+end-initializations
+
+declarations
+	
+	rowx_n = 1..m_c
+	rowy_n = 1..s_c
+	rowx_c = 1..m_n
+	rowy_c = 1..s_n
+	col = 1..n
+	
+	lamda: mpvar(col)
+	ni: mpvar
+	
+	y_n:  array( rowy_n,col ) of integer
+	x_n:  array( rowx_n,col ) of integer
+	y_c:  array( rowy_c,col ) of integer
+	x_c:  array( rowx_c,col ) of integer
+	l_xn:  array( rowx_n,col ) of real
+	l_yn:  array( rowy_n,col ) of real
+	u_xn:  array( rowx_n,col ) of real
+	u_yn:  array( rowy_n,col ) of real
+	
+end-declarations
+
+initializations from FILE_DATA
+	y_n
+	x_n
+	y_c
+	x_c
+	l_xn
+	l_yn
+	u_xn
+	u_yn
+end-initializations
+
+forall(j in rowx_c)
+	x_c(j,k) >= sum(i in col) x_c(j,i) * lamda(i)
+	
+forall(j in rowy_c)
+	ni * y_c(j,k) <= sum(i in col) y_c(j,i) * lamda(i)
+	
+forall(j in rowx_n)
+	sum(i in col) x_n(j,i) * lamda(i) >= l_xn(j,k)
+
+forall(j in rowy_n)
+	sum(i in col) y_n(j,i) * lamda(i) >= l_yn(j,k)
+	
+forall(j in rowx_n)
+	sum(i in col) x_n(j,i) * lamda(i) <= u_xn(j,k)
+
+forall(j in rowy_n)
+	sum(i in col) y_n(j,i) * lamda(i) >= u_yn(j,k)
+	
+sum(i in col) lamda(i) <= U
+
+sum(i in col) lamda(i) >= L
+
+forall(i in col)
+	lamda(i) >= 0
+
+maximize(ni)
+	
+!STAMPASOL
+writeln( 'teta',k,'= ', getsol(ni))
+
+end-model

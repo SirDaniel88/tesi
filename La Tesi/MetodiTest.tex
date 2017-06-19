@@ -1,0 +1,130 @@
+\chapter{Metodi Test DEA} \label{CAP:due}
+\section{CCR}
+\bigskip
+
+\begin{definiz} Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Definiamo il CCR-Duale nel seguente modo:
+\begin{equation}
+\begin{split}
+(DLP_0) \qquad & \min_{\theta, \boldsymbol{\lambda}} \theta \\
+\text{t.c} \qquad & \theta\boldsymbol{x_o} - \boldsymbol{X\lambda} \geq 0 \\
+& \boldsymbol{Y\lambda} \geq \boldsymbol{y_o} \\
+& \boldsymbol{\lambda} \geq 0
+\end{split}
+\end{equation}
+dove $\boldsymbol{\lambda} \in \mathbb{R}^{n}$ rappresenta il vettore dei pesi.
+\end{definiz}
+\begin{definiz}
+Definiamo i vettori degli input in eccesso e degli output carenti, indicati rispettivamente come $\boldsymbol{s^{-}}$ e $\boldsymbol{s^{+}}$, nel seguente modo:
+\begin{equation}
+\begin{split}
+\boldsymbol{s^{-}} = \theta \boldsymbol{x_o} - \boldsymbol{X \lambda} \text{ , }
+\boldsymbol{s^{+}} = \boldsymbol{Y \lambda} -\boldsymbol{y_o}
+\end{split}
+\end{equation}
+\end{definiz}
+\begin{definiz} Usando la soluzione ottima del modello CCR-DUAL risolviamo il seguente sistema:
+\begin{equation}
+\begin{split}
+max_{\boldsymbol{\lambda, s^{-},s^{+}}} & \qquad \omega = \boldsymbol{es^{-} + es^{+}} \\ \text{t.c.} & \qquad \boldsymbol{s^{-}} = \theta^{*}\boldsymbol{x_o - X\lambda} \\ & \qquad
+\boldsymbol{s^{+}} = \boldsymbol{Y\lambda - y_o} \\ & \qquad \boldsymbol{\lambda \geq 0 \text{ , } s^{-} \geq 0 \text{ , } s^{+} \geq 0} 
+\end{split}
+\end{equation}
+dove $\boldsymbol{e} = (1,\ldots ,1)$. Definiamo tale modello II fase.
+\end{definiz}
+\begin{definiz}
+Una soluzione ottima $(\boldsymbol{\lambda^*, s^{-*}, s^{+*}})$ del modello precedentemente esposto \'e  chiamata "max-slack solution". Se tale soluzione soddisfa $\boldsymbol{s^{-*} = 0}$ e $\boldsymbol{s^{+*} = 0}$ viene chiamata "zero-slack".
+\end{definiz}
+\begin{definiz}
+Se una soluzione ottimale $(\boldsymbol{\theta^{*},\lambda^*, s^{-*}, s^{+*}})$ dei due modelli esposti soddisfa $\theta^* = 1$ ed \'e una soluzione zero-slack allora la DMU \'e chiamata CCR-efficient. Altrimenti \'e inefficiente.
+\end{definiz}
+\begin{definiz}
+Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Definiamo il CCR-Model orientato agli Output nel seguente modo:
+\begin{equation} \label{eq1}
+\begin{split}
+(DLPO_0) \qquad & \min_{\theta, \boldsymbol{\lambda}} \theta \\
+\text{t.c} \qquad & \boldsymbol{x_o} - \boldsymbol{X\lambda} \geq 0 \\
+& \boldsymbol{Y\lambda} \geq \theta\boldsymbol{y_o} \\
+& \boldsymbol{\lambda} \geq 0
+\end{split}
+\end{equation}
+\end{definiz}
+\begin{oss}
+Anche in questo caso possiamo definire i vettori di slack:
+\begin{equation}
+X\boldsymbol{\lambda + s^{-}} = \boldsymbol{x_o} \\
+Y\boldsymbol{\lambda - s^{+}} = \theta\boldsymbol{y_o} 
+\end{equation}
+\end{oss}
+\begin{oss} Supponiamo di avere $(\theta^{*}, \boldsymbol{s^{*-}}, \boldsymbol{s^{*+}})$ soluzioni ottimali del CCR-Model e $(\mu^{*}, \boldsymbol{t^{*-}}, \boldsymbol{t^{*+}})$ allora si ha che:
+\begin{equation}
+\boldsymbol{t^{*-}} = \boldsymbol{s^{*-}} / \theta^{*}, 
+\boldsymbol{t^{*+}} = \boldsymbol{s^{*+}} / \theta^{*}
+\end{equation}
+\end{oss}
+\section{BCC}
+\bigskip
+\begin{definiz}
+Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Definiamo il BCC-Model nel seguente modo:
+\begin{equation}
+\begin{split}
+(BCC_0) \qquad & \min_{\theta, \boldsymbol{\lambda}} \theta \\
+\text{t.c} \qquad & \theta\boldsymbol{x_o} - \boldsymbol{X\lambda} \geq 0 \\
+& \boldsymbol{Y\lambda} \geq \boldsymbol{y_o} \\
+& \boldsymbol{\lambda} \geq 0 \\
+& \boldsymbol{e\lambda} = 1
+\end{split}
+\end{equation}
+dove $\boldsymbol{\lambda} \in \mathbb{R}^{n}$ rappresenta il vettore dei pesi ed $\boldsymbol{e} = (1 \dots 1)$.
+\end{definiz}
+\begin{definiz}
+Se una soluzione ottima $(\theta^{*}, \boldsymbol{\lambda^{*}, s^{-*}, s^{+*}})$, ottenuta applicando la II fase al BCC-Model, soddisfa le condizioni $\theta^{*} = 1$ e "no slack solution" allora la DMU \'e chiamata BCC-efficient, altrimenti \'e inefficiente. 
+\end{definiz}
+\begin{definiz}
+Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Definiamo il BCC orientato all'Output nel seguente modo:
+\begin{equation}
+\begin{split}
+(BCC_0-0) \qquad & \max_{\theta, \boldsymbol{\lambda}} \theta \\
+\text{t.c} \qquad & \boldsymbol{X\lambda} \leq \boldsymbol{x_o} \\
+& \boldsymbol{Y\lambda} \geq \theta\boldsymbol{y_o} \\
+& \boldsymbol{\lambda} \geq 0 \\
+& \boldsymbol{e\lambda} = 1
+\end{split}
+\end{equation}
+dove $\boldsymbol{\lambda} \in \mathbb{R}^{n}$ rappresenta il vettore dei pesi ed $\boldsymbol{e} = (1 \dots 1)$.
+\end{definiz}
+\section{ADDITIVE MODEL}
+\bigskip
+\begin{definiz}
+Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Definiamo l'ADDITIVE-MODEL nel seguente modo:
+\begin{equation}
+\begin{split}
+(ADD_0) \qquad & \max_{\boldsymbol{\lambda, s^+, s^-}} \theta = \boldsymbol{es^- + e^+}\\
+\text{t.c} \qquad & \boldsymbol{X\lambda + s^-} =  \boldsymbol{x_o} \\
+& \boldsymbol{Y\lambda - s^+} = \boldsymbol{y_o} \\
+& \boldsymbol{e\lambda} = 1 \\
+& \boldsymbol{\lambda} \geq 0 , \boldsymbol{s^-} \geq 0 ,\boldsymbol{s^+} \geq 0 
+\end{split}
+\end{equation}
+dove $\boldsymbol{\lambda} \in \mathbb{R}^{n}$ rappresenta il vettore dei pesi ed $\boldsymbol{e} = (1 \dots 1)$.
+\end{definiz}
+\begin{definiz}
+Una DMU si dice \emph{ADD-efficient} se e solo se $\boldsymbol{s^{-*} = 0}$ e $\boldsymbol{s^{+*} = 0}$
+\end{definiz}
+\section{SBM MODEL}
+\bigskip
+\begin{definiz}
+Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Definiamo SBM-DUALE nel seguente modo:
+\begin{equation}
+\begin{split}
+(D-SBM) \qquad & \max_{\theta, \boldsymbol{v, u}} \theta \\
+\text{t.c} \qquad & \theta + \boldsymbol{vx_o - uy_o} =  1 \\
+& \boldsymbol{uY - vX} \leq \boldsymbol{0} \\
+& \boldsymbol{v} \geq 1/m[1/\boldsymbol{x_o}] \\
+& \boldsymbol{u} \geq \theta/s[1/\boldsymbol{y_o}] \\
+\end{split}
+\end{equation}
+dove con $[1/\boldsymbol{x}]$ rappresenta il vettore $(1/x_1, \dots , 1/x_m)$.
+\end{definiz}
+\begin{definiz}
+Una DMU si dice \emph{SBM-efficient} se e solo se $\theta = 1$
+\end{definiz}

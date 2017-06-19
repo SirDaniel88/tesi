@@ -1,0 +1,10 @@
+TODO list
+- inserire Max-slack Solution, Zero-slack Activity (pg 78 ) per trovare le scelte da adottare per rendere le DMU non efficienti, tali
+- verificare eventuali aggiunte nel modello output-orieted
+- estensione fasi II e III in CCR-Model pag 84(II fase) e 99 (III fase)
+- nella gestione dei ritorni di scala gestire le soluzioni ottimali per capire in quale situazione ci troviamo
+- gestire il rilassamento del vincolo e* lamda = 1 con il ritorni di scala (pag 182-184)
+- leggere esempio pag 188 - 192
+- vedere additive model pagina 194 
+- vedere pag 211-212 per AR
+- vedere SBM model e Hybrid Model

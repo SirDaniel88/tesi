@@ -1,0 +1,60 @@
+model CCR_Model
+uses "mmxprs";
+
+parameters
+	FILE_DATA =  "C:/Users/ConsigliaA/Desktop/tesiDaniele/datiEsercizio1.txt"
+	k = 4
+end-parameters
+
+declarations
+	
+	s:integer
+	m:integer
+	n:integer
+	
+end-declarations
+
+initializations from FILE_DATA
+	s
+	m
+	n
+end-initializations
+
+declarations
+	
+	row1 = 1..m
+	row2 = 1..s
+	col = 1..n
+	
+	vu: array( row1 ) of mpvar
+	mu: array( row2 ) of mpvar
+	
+	y:  array( row2,col ) of integer
+	x:  array( row1,col ) of integer
+	
+end-declarations
+
+initializations from FILE_DATA
+	y
+	x
+end-initializations
+
+sum(i in row1) vu(i)*x(i,k)=1
+	
+forall(j in col)
+	v1(j):= sum(i in row2) mu(i)*y(i,j)<= sum(i in row1) vu(i)*x(i,j)
+
+forall(i in row1)
+	v2(i):= vu(i)>=0
+
+forall(i in row2)
+	v3(i):= mu(i)>=0
+
+!funzione obiettivo
+teta:= sum( i in row2 ) mu(i)*y(i,k)
+maximize(teta)
+
+!STAMPASOL
+writeln( 'teta',k,'= ', getsol(teta))
+
+end-model

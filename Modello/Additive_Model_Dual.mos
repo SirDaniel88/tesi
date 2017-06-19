@@ -1,0 +1,61 @@
+model Additive_Model_Dual
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+parameters
+	FILE_DATA =  "C:/Users/ConsigliaA/Desktop/tesiDaniele/datiEsercizio1.txt"
+	k = 3
+end-parameters
+
+declarations
+	
+	s:integer
+	m:integer
+	n:integer
+	
+end-declarations
+
+initializations from FILE_DATA
+	s
+	m
+	n
+end-initializations
+
+declarations
+	
+	row1 = 1..m
+	row2 = 1..s
+	col = 1..n
+	
+	v: array( row1 ) of mpvar
+	u: array( row2 ) of mpvar
+	u_0: mpvar
+	
+	y:  array( row2,col ) of integer
+	x:  array( row1,col ) of integer
+	
+end-declarations
+
+initializations from FILE_DATA
+	y
+	x
+end-initializations
+
+forall(i in col) do
+	sum(j in row1)v(j)*x(j,i) - sum(j in row2) u(j) * y(j,i) >= - u_0
+end-do
+
+forall(j in row1)
+	v(j) >= 1
+	
+forall(j in row2)
+	u(j) >= 1
+
+w:= sum(j in row1) v(j)*x(j,k) - sum(i in row2) u(i)*y(i,k) + u_0
+
+minimize(w)
+
+!STAMPASOL
+writeln( 'teta',k,'= ', getsol(w))
+
+end-model
+

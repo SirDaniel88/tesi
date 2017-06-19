@@ -1,0 +1,80 @@
+model CCR_Model
+uses "mmxprs";
+
+parameters
+	FILE_DATA =  "C:/Users/ConsigliaA/Desktop/tesiDaniele/tabelle/Test1-input.Output/input-output.txt"
+	k = 11
+end-parameters
+
+declarations
+	
+	s:integer
+	m:integer
+	n:integer
+	
+end-declarations
+
+initializations from FILE_DATA
+	s
+	m
+	n
+end-initializations
+
+declarations
+	
+	row1 = 1..m
+	row2 = 1..s
+	col = 1..n
+	
+	vu: array( row1 ) of mpvar
+	mu: array( row2 ) of mpvar
+	
+	y:  array( row2,col ) of integer
+	x:  array( row1,col ) of integer
+	
+end-declarations
+
+initializations from "mmsheet.xls:Input-Output.xls"
+	y as "noindex;Output"
+	x as "noindex;Input"
+end-initializations
+
+forall(j in col)
+	v2(j):= sum(i in row2) mu(i)*y(i,j) <= sum(i in row1) vu(i)*x(i,j)
+
+forall(i in row1)
+	v3(i):= vu(i)>=0
+
+forall(i in row2)
+	v4(i):= mu(i)>=0
+
+v1:= sum(i in row1) vu(i)*x(i,k)=1
+
+!funzione obiettivo
+teta:= sum( i in row2 ) mu(i)*y(i,k)
+
+maximize(teta)
+
+!STAMPASOL
+fopen("CCR_Model_V.txt",F_OUTPUT+F_APPEND)
+write('vu_',k,'= { ')
+forall(i in row1)
+write(getsol(vu(i)),' ')
+write('}')
+writeln
+fclose(F_OUTPUT)
+
+fopen("CCR_Model_M.txt",F_OUTPUT+F_APPEND)
+write('mu_',k,'= { ')
+forall(i in row2)
+write(getsol(mu(i)),' ')
+write('}')
+writeln
+fclose(F_OUTPUT)
+
+fopen("CCR_Model_Solution.txt",F_OUTPUT+F_APPEND)
+writeln( 'teta',k,'= ', getsol(teta))
+fclose(F_OUTPUT)
+
+
+end-model

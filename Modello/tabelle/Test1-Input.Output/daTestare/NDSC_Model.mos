@@ -1,0 +1,68 @@
+model NDSC_Model
+uses "mmxprs";
+
+parameters
+	FILE_DATA =  "C:/Users/ConsigliaA/Desktop/tesiDaniele/datiEsercizio1.txt"
+	k = 4
+end-parameters
+
+declarations
+	
+	s:integer
+	m_d:integer
+	m_nd:integer
+	n:integer
+	e:real
+	
+end-declarations
+
+initializations from FILE_DATA
+	s
+	m_d
+	m_nd
+	n
+end-initializations
+
+declarations
+	
+	rowx_nd = 1..m_n
+	rowx_d = 1..m_d
+	rowy = 1..s
+	col = 1..n
+	
+	v_nd: array(rowx_nd) of mpvar
+	v_d: array(rowx_d) of mpvar
+	u: array(rowy) of mpvar
+	x_nd:  array( rowx_nd,col ) of integer
+	y:  array( rowy,col ) of integer
+	x_d:  array( rowx_d,col ) of integer
+	
+end-declarations
+
+initializations from FILE_DATA
+	y
+	x
+end-initializations
+
+forall(j in col)
+	sum(i in rowy) u(i) * y(i,j) - sum(i in rowx_nd) v_nd(i) * x_nd(i,j) - sum(i in rowx_d) v_d(i) * x_d(i,j) <=0
+	
+sum(i in rowx_nd) v_nd(i) * x_nd(i,j) + sum(i in rowx_d) v_d(i) * x_d(i,j) = 1
+
+forall(i in rowx_d)
+	v_d(i) >= e
+	
+forall(i in rowx_nd)
+	v_nd(i) >= 0
+
+forall(i in rowy)
+	u(i) >= e
+	
+teta:= sum(i in rowy) u(i) * y(i,K) - sum(i in rowx_nd) v_nd(i) * x_nd(i,k)
+
+maximize(teta)
+
+!STAMPASOL
+writeln( 'teta',k,'= ', getsol(teta))
+
+end-model

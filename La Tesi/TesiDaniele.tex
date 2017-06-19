@@ -1,0 +1,59 @@
+\documentclass[a4paper]{report} 
+%% in alternativa,\documentclass[a4paper]{book}
+
+%% importazione di pacchetti utili
+\usepackage[italian]{babel}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{float}
+
+%%%% ENVIRONMENTS
+\newtheorem{teor}{Teorema}[section]
+\newtheorem{prop}[teor]{Proposizione}
+\newtheorem{lemma}[teor]{Lemma}
+\newtheorem{cor}[teor]{Corollario}
+\newtheorem{alg}[teor]{Algoritmo}
+\newtheorem{oss}[teor]{Osservazione}
+\newtheorem{definiz}{Definizione}
+
+%%%% direttive definite dall'utente:
+\newcommand{\dimostraz}{\noindent\textit{Dimostrazione:\ }}
+\newcommand{\qed}{\hfill\ensuremath{\Box}}
+
+%%%% l'istruzione successiva serve per avere una compilazione selettiva 
+%%%% dei vari capitoli.
+%\includeonly{dedica}
+
+\begin{document}
+
+%\include{frontespizio}
+
+%\thispagestyle{empty}
+%\include{dedica}
+
+%\tableofcontents
+%\thispagestyle{empty}
+
+%\include{introduzione}
+
+\include{Esempi}
+
+\include{MetodiTest}
+
+%\include{capitoloIII}
+
+%\include{conclusioni}
+
+%\include{ringraziamenti}
+
+%\include{bibliografia}
+
+\end{document}
