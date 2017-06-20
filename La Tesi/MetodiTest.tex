@@ -2,6 +2,39 @@
 \section{CCR}
 \bigskip
 
+\paragraph{} Proseguiamo la trattazione esponendo il modello presentato per la prima volta da Charnes, Cooper e Rhodes nel 1978, che va sotto il nome di CCR.
+\begin{definiz} Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Definiamo il CCR-Model nel seguente modo:
+\begin{equation} \label{EQ:ccr-feq}
+\begin{split}
+(FP_o) \qquad & \max_{\boldsymbol{u,v}} \theta = \frac{u_1y_{1o} + \dots + u_sy_{so}}{v_1x_{1o} + \dots + v_mx_{mo}} \\
+\text{t.c} \qquad & \frac{u_1y_{1j} + \dots + u_sy_{sj}}{v_1x_{1j} + \dots + v_mx_{mj}} \geq 1 \qquad (j=1,\dots,n)\\
+& v_1,\dots,v_m \geq 0 \\
+& u_1,\dots,u_s \geq 0 \\
+\end{split}
+\end{equation}
+dove $v_j$ e $u_j$ rappresentano i pesi che associamo a rispettivamente a ciascun input e output.
+\end{definiz}
+\paragraph{}
+Osserviamo che la \ref{EQ:ccr-feq} rappresenta un problema frazionale, quindi per poterlo eseguire con un elaboratore \'e risulta necessario riformularlo in modo da ottenere un problema lineare. 
+\begin{definiz}
+ Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Definiamo il CCR-Model nel seguente modo:
+\begin{equation} \label{EQ:ccr-leq}
+\begin{split}
+(FP_o) \qquad & \max_{\boldsymbol{\mu,\nu}} \theta = \mu_1y_{1o} + \dots + \mu_sy_{so} \\
+\text{t.c} \qquad & \nu_1x_{1o} + \dots + \nu_mx_{mo} = 1\\
+& \mu_1y_{1j} + \dots + \mu_sy_{sj} \leq  \nu_1x_{1j} + \dots + \nu_mx_{mj} \quad (j = 1, \dots, n) \\
+& \nu_1,\dots,\nu_m \geq 0 \\
+& \mu_1,\dots,\mu_s \geq 0 \\
+\end{split}
+\end{equation}
+dove $\nu_j$ e $\mu_j$ rappresentano i pesi che associamo a rispettivamente a ciascun input e output.
+\end{definiz}
+\begin{teor}
+La \ref{EQ:ccr-feq} \'e equivalente alla \ref{EQ:ccr-leq}
+\end{teor}
+\begin{teor}(Unit Invariant Theorem)
+La soluzione ottimale della \ref{EQ:ccr-feq} e \ref{EQ:ccr-leq} che indicheremo con $\max \theta = \theta^*$ sono indipendeti dalle unit\'a di misura con cui sono espressi output e input a patto che per ogni \emph{DMU} essi siano valutati con la stessa unit\'a di misura.
+\end{teor}
 \begin{definiz} Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Definiamo il CCR-Duale nel seguente modo:
 \begin{equation}
 \begin{split}
