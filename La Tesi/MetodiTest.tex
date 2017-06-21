@@ -35,6 +35,8 @@ La \ref{EQ:ccr-feq} \'e equivalente alla \ref{EQ:ccr-leq}
 \begin{teor}(Unit Invariant Theorem)
 La soluzione ottimale della \ref{EQ:ccr-feq} e \ref{EQ:ccr-leq} che indicheremo con $\max \theta = \theta^*$ sono indipendeti dalle unit\'a di misura con cui sono espressi output e input a patto che per ogni \emph{DMU} essi siano valutati con la stessa unit\'a di misura.
 \end{teor}
+\begin{definiz} (CCR-Efficiency) La DMU \'e efficiente per il CCR-Model se $\theta^* = 1$ e $(\boldsymbol{v^*, u^*})$, con $\boldsymbol{v^* \geq 0}$ e $\boldsymbol{u^* \geq 0}$. Altrimenti la DMU \'e inefficiente.
+\end{definiz} 
 \begin{definiz} Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Definiamo il CCR-Duale nel seguente modo:
 \begin{equation}
 \begin{split}
@@ -56,7 +58,7 @@ Definiamo i vettori degli input in eccesso e degli output carenti, indicati risp
 \end{equation}
 \end{definiz}
 \begin{definiz} Usando la soluzione ottima del modello CCR-DUAL risolviamo il seguente sistema:
-\begin{equation}
+\begin{equation} \label{EQ:ccr-leq2}
 \begin{split}
 max_{\boldsymbol{\lambda, s^{-},s^{+}}} & \qquad \omega = \boldsymbol{es^{-} + es^{+}} \\ \text{t.c.} & \qquad \boldsymbol{s^{-}} = \theta^{*}\boldsymbol{x_o - X\lambda} \\ & \qquad
 \boldsymbol{s^{+}} = \boldsymbol{Y\lambda - y_o} \\ & \qquad \boldsymbol{\lambda \geq 0 \text{ , } s^{-} \geq 0 \text{ , } s^{+} \geq 0} 
@@ -94,6 +96,50 @@ Y\boldsymbol{\lambda - s^{+}} = \theta\boldsymbol{y_o}
 \boldsymbol{t^{*+}} = \boldsymbol{s^{*+}} / \theta^{*}
 \end{equation}
 \end{oss}
+\begin{definiz} (Pareto-Koopmans Efficiency) Una DMU \'e pienamente efficiente se e solo se non \'e possibile aumentare qualunque input o output senza peggiorarne un altro.
+\end{definiz} 
+\begin{teor} LE due definizioni di CCR-Efficient sono equivalenti.
+\end{teor}
+\begin{oss} Per una $DMU_{o}$ inefficiente, noi definiamo l'insieme di riferimento $E_{o}$, usando la max-slack solution ottenuta usando la \ref{EQ:ccr-leq2} e la \ref{EQ:ccr-leq}:
+\begin{equation}
+E_{o} = \lbrace j| \lambda_{j}^* \geq 0\rbrace \qquad (j\in \lbrace1, \dots, n\rbrace).
+\end{equation}
+Una soluzione ottimale pu\'o essere espressa come:
+\begin{equation}
+\begin{split}
+\theta^*\boldsymbol{x_{o}} = & \sum_{j \in E_{o}} \boldsymbol{x_{j}\lambda^*_{j} + s^{-*}} \\
+\boldsymbol{y_{o}} = & \sum_{j \in E_{o}} \boldsymbol{y_{j}\lambda^*_{j} - s^{+*}}
+\end{split}
+\end{equation}
+Questo pu\'o essere interpretato come segue:
+\begin{equation}
+\boldsymbol{x_{o}} \geq \theta^* \boldsymbol{x_{o} - s^{-*}} = \sum_{j \in E_{o}} \boldsymbol{x_{j}\lambda^*_{j}}
+\end{equation}
+quindi
+\begin{equation}
+\boldsymbol{x_0} \geq \text{tecnice - mista inefficiente} \\
+= \text{ una combinazione positiva degli input valutati}
+\end{equation}
+In modo analogo 
+\begin{equation}
+\boldsymbol{y_{o}} \leq \boldsymbol{y_{o} + s^{+*}} = \sum_{j \in E_{o}} \boldsymbol{y_{j}\lambda^*_{j}}
+\end{equation}
+quindi
+\begin{equation}
+\boldsymbol{y_0} \leq \text{output + carenze} \\
+= \text{ una combinazione positiva degli output valutati}
+\end{equation}
+Concludendo queste relazioni suggeriscono che l'efficienza $(\boldsymbol{x_{o}, y_{o}})$ per una DMU pu\'o essere migliorata riducendo radialmente gli input usando la $\theta^*$ e eliminando gli eccessi $s^{-*}$. In modo analogo si pu\'o agire sugli output aumentando gli output della quantit\'a espressa da $s^{+*}$.
+\end{oss}
+\paragraph{} Dalle considerazioni fatte fino  ad ora possiamo enunziare la seguente definizione
+\begin{definiz} Definiamo le \emph{CCR-projection} come:
+\begin{equation}
+\begin{split}
+\boldsymbol{\hat{x}_{o}} & = \boldsymbol{x_o - \Delta x_{o}} = \theta^*\boldsymbol{x_o - s^{-*}} \leq \boldsymbol{x_o} \\
+\boldsymbol{\hat{y}_{o}} & = \boldsymbol{y_o + \Delta y_{o}} = \theta^*\boldsymbol{y_o + s^{+*}} \geq \boldsymbol{y_o} 
+\end{split}
+\end{equation}
+\end{definiz}
 \section{BCC}
 \bigskip
 \begin{definiz}
