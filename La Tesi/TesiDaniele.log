@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.4)  21 JUN 2017 21:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.4)  26 JUN 2017 21:01
 entering extended mode
 **TesiDaniele.tex
 (TesiDaniele.tex
@@ -559,13 +559,13 @@ Package rerunfilecheck Info: File `TesiDaniele.out' has not changed.
 (rerunfilecheck)             Checksum: F3A0FB0A1551C7B440909DE0BCCFDAB1;366.
  ) 
 Here is how much of TeX's memory you used:
- 7918 strings out of 493673
- 113494 string characters out of 3141515
- 227788 words of memory out of 3000000
- 11076 multiletter control sequences out of 15000+200000
+ 7939 strings out of 493673
+ 113802 string characters out of 3141515
+ 227989 words of memory out of 3000000
+ 11082 multiletter control sequences out of 15000+200000
  11082 words of font info for 43 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 29i,21n,30p,797b,405s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,21n,30p,797b,410s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmbsy5.
 pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmbs
@@ -585,9 +585,9 @@ les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)
 /MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/M
 iKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on TesiDaniele.pdf (8 pages, 239505 bytes).
+Output written on TesiDaniele.pdf (8 pages, 246530 bytes).
 PDF statistics:
- 240 PDF objects out of 1000 (max. 8388607)
- 78 named destinations out of 1000 (max. 500000)
+ 264 PDF objects out of 1000 (max. 8388607)
+ 93 named destinations out of 1000 (max. 500000)
  67 words of extra memory for PDF output out of 10000 (max. 10000000)
 

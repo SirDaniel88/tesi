@@ -72,17 +72,6 @@ Una soluzione ottima $(\boldsymbol{\lambda^*, s^{-*}, s^{+*}})$ del modello prec
 \begin{definiz}
 Se una soluzione ottimale $(\boldsymbol{\theta^{*},\lambda^*, s^{-*}, s^{+*}})$ dei due modelli esposti soddisfa $\theta^* = 1$ ed \'e una soluzione zero-slack allora la DMU \'e chiamata CCR-efficient. Altrimenti \'e inefficiente.
 \end{definiz}
-\begin{definiz}
-Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Definiamo il CCR-Model orientato agli Output nel seguente modo:
-\begin{equation} \label{eq1}
-\begin{split}
-(DLPO_0) \qquad & \min_{\theta, \boldsymbol{\lambda}} \theta \\
-\text{t.c} \qquad & \boldsymbol{x_o} - \boldsymbol{X\lambda} \geq 0 \\
-& \boldsymbol{Y\lambda} \geq \theta\boldsymbol{y_o} \\
-& \boldsymbol{\lambda} \geq 0
-\end{split}
-\end{equation}
-\end{definiz}
 \begin{oss}
 Anche in questo caso possiamo definire i vettori di slack:
 \begin{equation}
@@ -90,18 +79,12 @@ X\boldsymbol{\lambda + s^{-}} = \boldsymbol{x_o} \\
 Y\boldsymbol{\lambda - s^{+}} = \theta\boldsymbol{y_o} 
 \end{equation}
 \end{oss}
-\begin{oss} Supponiamo di avere $(\theta^{*}, \boldsymbol{s^{*-}}, \boldsymbol{s^{*+}})$ soluzioni ottimali del CCR-Model e $(\mu^{*}, \boldsymbol{t^{*-}}, \boldsymbol{t^{*+}})$ allora si ha che:
-\begin{equation}
-\boldsymbol{t^{*-}} = \boldsymbol{s^{*-}} / \theta^{*}, 
-\boldsymbol{t^{*+}} = \boldsymbol{s^{*+}} / \theta^{*}
-\end{equation}
-\end{oss}
 \begin{definiz} (Pareto-Koopmans Efficiency) Una DMU \'e pienamente efficiente se e solo se non \'e possibile aumentare qualunque input o output senza peggiorarne un altro.
 \end{definiz} 
 \begin{teor} LE due definizioni di CCR-Efficient sono equivalenti.
 \end{teor}
 \begin{oss} Per una $DMU_{o}$ inefficiente, noi definiamo l'insieme di riferimento $E_{o}$, usando la max-slack solution ottenuta usando la \ref{EQ:ccr-leq2} e la \ref{EQ:ccr-leq}:
-\begin{equation}
+\begin{equation} \label{eq:insieme riferimento}
 E_{o} = \lbrace j| \lambda_{j}^* \geq 0\rbrace \qquad (j\in \lbrace1, \dots, n\rbrace).
 \end{equation}
 Una soluzione ottimale pu\'o essere espressa come:
@@ -133,13 +116,54 @@ Concludendo queste relazioni suggeriscono che l'efficienza $(\boldsymbol{x_{o}, 
 \end{oss}
 \paragraph{} Dalle considerazioni fatte fino  ad ora possiamo enunziare la seguente definizione
 \begin{definiz} Definiamo le \emph{CCR-projection} come:
-\begin{equation}
+\begin{equation} \label{EQ:project-crr-x}
+\begin{split} 
+\boldsymbol{\hat{x}_{o}} & = \boldsymbol{x_o - \Delta x_{o}} = \theta^*\boldsymbol{x_o - s^{-*}} \leq \boldsymbol{x_o}
+\end{split}
+\end{equation}
+\begin{equation} \label{EQ:project-crr-y}
 \begin{split}
-\boldsymbol{\hat{x}_{o}} & = \boldsymbol{x_o - \Delta x_{o}} = \theta^*\boldsymbol{x_o - s^{-*}} \leq \boldsymbol{x_o} \\
 \boldsymbol{\hat{y}_{o}} & = \boldsymbol{y_o + \Delta y_{o}} = \theta^*\boldsymbol{y_o + s^{+*}} \geq \boldsymbol{y_o} 
 \end{split}
 \end{equation}
 \end{definiz}
+\begin{teor}
+Le migliorie $(\boldsymbol{\hat{x}_{o},\hat{y}_{o}})$ espresse dalle \ref{EQ:project-crr-x} e \ref{EQ:project-crr-y} sono CCR-efficient
+\end{teor}
+\begin{cor} I punti con coordinate $(\boldsymbol{\hat{x}_{o},\hat{y}_{o}})$ definite dalle \ref{EQ:project-crr-x} e \ref{EQ:project-crr-y} rappresentano il punto della frontiera dell'efficienza usata per valutare la performance della $DMU_{o}$.
+\end{cor}
+\begin{lemma}
+Per il punto $(\boldsymbol{\hat{x}_{o},\hat{y}_{o}})$, esiste una soluzione ottima $(\boldsymbol{\hat{v}_{o},\hat{u}_{o}})$ per il problema $(LP_{e})$, la quale \'e duale a $(DLP_{e})$, tale che:
+\begin{equation}
+\begin{split}
+\boldsymbol{\hat{v}_{o} \geq 0} & \\
+\boldsymbol{\hat{u}_{o} \geq 0} & \\
+\boldsymbol{\hat{v}_{o}x_{j} = \hat{u}_{o}y_{j}} & \quad (j \in E_{o}) \\
+\boldsymbol{\hat{v}_{o}X \geq \hat{u}_{o}Y} & 
+\end{split}
+\end{equation}
+\end{lemma}
+\begin{teor} Le DMU in $E_{o}$ definito in \ref{eq:insieme riferimento} sono CCR-efficient
+\end{teor}
+\begin{teor} Ciascuna combinazione semipositiva delle DMU in $E_{o}$ \'e CCR-efficient.
+\end{teor}
+\begin{definiz}
+Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Definiamo il CCR-Model orientato agli Output nel seguente modo:
+\begin{equation} \label{eq1}
+\begin{split}
+(DLPO_0) \qquad & \min_{\theta, \boldsymbol{\lambda}} \theta \\
+\text{t.c} \qquad & \boldsymbol{x_o} - \boldsymbol{X\lambda} \geq 0 \\
+& \boldsymbol{Y\lambda} \geq \theta\boldsymbol{y_o} \\
+& \boldsymbol{\lambda} \geq 0
+\end{split}
+\end{equation}
+\end{definiz}
+\begin{oss} Supponiamo di avere $(\theta^{*}, \boldsymbol{s^{*-}}, \boldsymbol{s^{*+}})$ soluzioni ottimali del CCR-Model e $(\mu^{*}, \boldsymbol{t^{*-}}, \boldsymbol{t^{*+}})$ soluzioni del CCR-Model orientato agli output, allora si ha che:
+\begin{equation}
+\boldsymbol{t^{*-}} = \boldsymbol{s^{*-}} / \theta^{*}, 
+\boldsymbol{t^{*+}} = \boldsymbol{s^{*+}} / \theta^{*}
+\end{equation}
+\end{oss}
 \section{BCC}
 \bigskip
 \begin{definiz}
@@ -158,6 +182,30 @@ dove $\boldsymbol{\lambda} \in \mathbb{R}^{n}$ rappresenta il vettore dei pesi e
 \begin{definiz}
 Se una soluzione ottima $(\theta^{*}, \boldsymbol{\lambda^{*}, s^{-*}, s^{+*}})$, ottenuta applicando la II fase al BCC-Model, soddisfa le condizioni $\theta^{*} = 1$ e "no slack solution" allora la DMU \'e chiamata BCC-efficient, altrimenti \'e inefficiente. 
 \end{definiz}
+\begin{definiz}
+Per una $DMU_{o}$ inefficiente per BCC model definiamo il suo insieme di riferimento, $E_{o}$ basato su una soluzione ottima $\boldsymbol{\lambda^*}$ come:
+\begin{equation} \label{eq: insieme riferimento BCC}
+E_{o} = \lbrace j | \lambda_{j}^* \geq 0 \rbrace \quad (j \in \lbrace 1, \dots , n \rbrace
+\end{equation}
+\end{definiz}
+\begin{definiz}
+Definiamo le proiezioni del BCC-Model come:
+\begin{equation} \label{eq:projection-bcc-x}
+ \hat{\boldsymbol{x_{o}}} = \theta^* \boldsymbol{x_o - s^{-*}}
+\end{equation}
+\begin{equation}\label{eq:projection-bcc-y}
+ \hat{\boldsymbol{y_{o}}} = boldsymbol{y_o + s^{+*}}
+\end{equation}
+\end{definiz}
+\begin{teor}
+Il punto di coordinate $(\boldsymbol{\hat{x_{o}}, \hat{y_{o}}})$ \'e BCC-efficient.
+\end{teor}
+\begin{teor}
+Ogni DMU in $E_{o}$ associata a un $\lambda_{j}$ definita come \ref{eq: insieme riferimento BCC} \'e BCC-efficient
+\end{teor}
+\begin{teor}
+Una DMU che ha un il valore minimo per ogni input, oppure che ha valore massimo per ciascun output, \'e BCC-efficient. 
+\end{teor}
 \begin{definiz}
 Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Definiamo il BCC orientato all'Output nel seguente modo:
 \begin{equation}
