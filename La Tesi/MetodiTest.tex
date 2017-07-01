@@ -237,6 +237,16 @@ dove $\boldsymbol{\lambda} \in \mathbb{R}^{n}$ rappresenta il vettore dei pesi e
 \begin{definiz}
 Una DMU si dice \emph{ADD-efficient} se e solo se $\boldsymbol{s^{-*} = 0}$ e $\boldsymbol{s^{+*} = 0}$
 \end{definiz}
+\begin{teor} $DMU_{o}$ \'e ADD-efficient se e solo se \'e BCC-efficient
+\end{teor}
+\begin{teor} Definiamo $\hat{\boldsymbol{x_{o}}} = \boldsymbol{x_{o} - s^{-*}}$ e $\hat{\boldsymbol{y_{o}}} = \boldsymbol{y_{o} + s^{+*}}$. Allora il punto $(\hat{\boldsymbol{x_{o}}, \boldsymbol{y_{o}}}$ \'e ADD-efficient.
+\end{teor}
+\begin{definiz} Definiamo \emph{Mix} la proporzione nella quale gli input sono usati e gli output prodotti.
+\end{definiz}
+\begin{definiz} Dato un qualunque problema, una modello DEA \'e detto \emph{traslation invariant} se le traslazioni degli input e/o output iniziali generano un nuovo problema che ammette le stesse soluzioni del problema originale.
+\end{definiz}
+\begin{teor} L'Additive-model \'e \emph{traslation invariant}.
+\end{teor}
 \section{SBM MODEL}
 \bigskip
 \begin{definiz}
@@ -255,3 +265,9 @@ dove con $[1/\boldsymbol{x}]$ rappresenta il vettore $(1/x_1, \dots , 1/x_m)$.
 \begin{definiz}
 Una DMU si dice \emph{SBM-efficient} se e solo se $\theta = 1$
 \end{definiz}
+\begin{definiz} L'insieme degli indici corrispondenti ai valori positivi di $\lambda^*_{j}$ \'e chiamato insieme di riferimento per il punto $(\boldsymbol{x_{o}, y_{o}})$
+\end{definiz}
+\begin{teor} La soluzione ottima del SBM-Model \'e sempre minore o uguale a quella del CCR-model.
+\end{teor}
+\begin{teor} Una DMU \'e CCR-efficient se e solo se \'e SBM-efficient.
+\end{teor}
