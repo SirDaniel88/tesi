@@ -271,3 +271,28 @@ Una DMU si dice \emph{SBM-efficient} se e solo se $\theta = 1$
 \end{teor}
 \begin{teor} Una DMU \'e CCR-efficient se e solo se \'e SBM-efficient.
 \end{teor}
+\section{HYBRID}
+\bigskip
+Ci sono due tipo di approcci nella DEA: \emph{radiale} e \emph{non radiale}. La differenza esiste nella caratterizzazione degli input o degli output. Supponiamo di avere 4 input $(x_{1},x_{2},x_{3},x_{4})$ tali che $x_{1}, x_{2}$ sono radiali e gli altri no. Questa differenza potrebbe riflettersi sulla valutazione dell'efficienza. Nei modelli fino ad ora analizzati osserviamo che il CCR e il BCC hanno un approccio radiale mentre SBM ha un approccio non-radiale. In questa sezione mostreremo un approccio ibrido per misurare l'efficienza.
+\begin{definiz} Sia $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ la matrice degli Input e sia $\boldsymbol{Y} \in \mathbb{R}^{s \times n}$  la matrice degli Output. Decomponiamo la matrice degli input nella sua parte radiale $\boldsymbol{X^R} \in \mathbb{R}^{m_{1} \times n}$ e non radiale $\boldsymbol{X^{NR}} \in \mathbb{R}^{m_{2} \times n}$, con $m_{1} + m_{2} = m$. In modo del tutto analogo decomponiamo la matrice degli output in $\boldsymbol{Y^R} \in \mathbb{R}^{s_{1} \times n}$ e $\boldsymbol{Y^{NR}} \in \mathbb{R}^{s_{2} \times n}$, con $s_{1} + s_{2} = s$. Supponiamo infine che l'insieme dei dati considerati sia assolutamente positivo, allora definiamo l'insieme delle possibilit\'a produttive come:
+\begin{equation}
+P = \lbrace (\boldsymbol{x,y}) | \boldsymbol{x \geq X\lambda, y \leq Y\lambda , \lambda \geq 0 }\rbrace
+\end{equation}
+dove $\lambda \in \mathbb{R}^n$ \'e un vettore non negativo.
+\end{definiz}
+\begin{oss}
+Diamo un equazione per descrivere un determinata $DMU(\boldsymbol{x_{o}, y_{o}) = (x_{o}^R, x_{o}^{NR}, y_{o}^R y_{o}^{NR}} \in P$ :
+\begin{equation}
+\begin{split}
+\theta\boldsymbol{x_{o}^R} = & \boldsymbol{X^R\lambda + s^{R-}}\\
+\boldsymbol{x_{o}^{NR}} = & \boldsymbol{X^{NR}\lambda + s^{NR-}}\\
+\phi\boldsymbol{y_{o}^R} = & \boldsymbol{Y^R\lambda - s^{R+}}\\
+\boldsymbol{y_{o}^{NR}} = & \boldsymbol{Y^{NR}\lambda - s^{NR+}}\\
+\end{split}
+\end{equation}
+con $\theta \leq 1, \phi \geq 1, \boldsymbol{\lambda \geq 0, s^{R-} \geq 0, s^{NR-} \geq 0, s^{R+} \geq 0, s^{NR+} \geq 0}$.
+Infine definiamo l'indice $\rho$ come:
+\begin{equation}
+\rho = \frac{1 - \frac{m_{1}}{m}(1 - \theta) - \frac{1}{m}\Sigma^{m_{2}}_{i=1} s^{NR-}_{i} / x_{io}^{NR}}{1 + \frac{s_{1}}{s}(\phi - 1) - \frac{1}{s}\Sigma^{s_{2}}_{r=1} s^{NR+}_{r} / y_{ro}^{NR}}
+\end{equation}
+\end{oss}
