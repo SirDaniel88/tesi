@@ -282,7 +282,7 @@ dove $\lambda \in \mathbb{R}^n$ \'e un vettore non negativo.
 \end{definiz}
 \begin{oss}
 Diamo un equazione per descrivere un determinata $DMU(\boldsymbol{x_{o}, y_{o}) = (x_{o}^R, x_{o}^{NR}, y_{o}^R y_{o}^{NR}} \in P$ :
-\begin{equation}
+\begin{equation} \label{EQ:hybrid}
 \begin{split}
 \theta\boldsymbol{x_{o}^R} = & \boldsymbol{X^R\lambda + s^{R-}}\\
 \boldsymbol{x_{o}^{NR}} = & \boldsymbol{X^{NR}\lambda + s^{NR-}}\\
@@ -296,3 +296,43 @@ Infine definiamo l'indice $\rho$ come:
 \rho = \frac{1 - \frac{m_{1}}{m}(1 - \theta) - \frac{1}{m}\Sigma^{m_{2}}_{i=1} s^{NR-}_{i} / x_{io}^{NR}}{1 + \frac{s_{1}}{s}(\phi - 1) - \frac{1}{s}\Sigma^{s_{2}}_{r=1} s^{NR+}_{r} / y_{ro}^{NR}}
 \end{equation}
 \end{oss}
+\begin{definiz}
+La $DMU(\boldsymbol{x_{o},y_{o}})$ \'e hybrid efficient se e solo se $\rho = 1$ per ogni espressione possibile della \ref{EQ:hybrid}, cio\'e, $ \theta = 1, \phi = 1, \boldsymbol{s^{NR_{-}} = 0} , \boldsymbol{s^{NR_{-}} = 0}$  
+\end{definiz}
+\begin{definiz} Utilizzando le considerazioni fatte fino a questo punto possiamo definire il modello Hybrid nel seguente modo:
+\begin{equation}
+\begin{split}
+\text{(HYBRID)} \qquad & \tau^* = \min t - \frac{m_1}{m}(\tau - \Theta) - \frac{1}{m} \Sigma^{m_2}_{i = 1} \frac{S^{NR_{-}}_{i}}{x^{NR}_{io}} \\
+\text{t.c} \qquad & t + \frac{s_1}{s}(\Phi - t) + \frac{1}{s} \Sigma^{s_2}_{r = 1} \frac{S^{NR_{+}}_{r}}{y^{NR}_{ro}} \\
+& \Theta\boldsymbol{x^{R}_o} \geq X^R \boldsymbol{\Lambda} \\
+& t\boldsymbol{x^{NR}_o} = X^{NR}\boldsymbol{\Lambda} + S^{NR_{-}}\\
+& \Phi\boldsymbol{y^{R}_o} \leq Y^R \boldsymbol{\Lambda} \\
+& t\boldsymbol{y^{NR}_o} = Y^{NR}\boldsymbol{\Lambda} - S^{NR_{+}}\\
+& \Theta \leq t, \Phi \geq t, \boldsymbol{\Lambda \geq 0}, \boldsymbol{S^{NR_{+}} \geq 0}, \boldsymbol{S^{NR_{-}} \geq 0}, 
+\end{split}
+\end{equation}
+\end{definiz}
+\begin{teor} La $DMU(\boldsymbol{x_o, y_o})$ \'e hybrid efficient se e solo se $\tau = 1$. 
+\end{teor}
+\begin{oss} Sia $(t^*, \Theta^*, \Phi^*, \boldsymbol{\Lambda^*, S^{NR_{-*}}, S^{NR_{+*}}})$ la soluzione ottima del HYBRID allora definiamo:
+\begin{equation}
+\begin{split}
+\theta^* & = \frac{\Theta^*}{t^*} \\
+\phi^* & = \frac{\Phi^*}{t^*} \\
+\boldsymbol{\lambda}^* & = \frac{\boldsymbol{\Lambda}^*}{t^*} \\
+\boldsymbol{s^{NR_{-*}}} & = \frac{\boldsymbol{S^{NR_{-*}}}}{t^*} \\
+\boldsymbol{s^{NR_{+*}}} & = \frac{\boldsymbol{S^{NR_{+*}}}}{t^*} \\
+\end{split}
+\end{equation}
+Se $\tau \leq 1$ allora definiamo le proiezioni del HYBRID model come:
+\begin{equation}
+\begin{split}
+\boldsymbol{\hat{x}_o^R} & \longleftarrow \theta^* \boldsymbol{x_o^R} \\
+\boldsymbol{\hat{x}_o^{NR}} & \longleftarrow \boldsymbol{x_o^{NR}} - \boldsymbol{s}^{NR_{-*}}\\
+\boldsymbol{\hat{y}_o^R} & \longleftarrow \phi^* \boldsymbol{y_o^R} \\
+\boldsymbol{\hat{y}_o^{NR}} & \longleftarrow \boldsymbol{y_o^{NR}} + \boldsymbol{s}^{NR_{+*}}\\
+\end{split}
+\end{equation}
+\end{oss}
+\begin{teor} Le proiezioni definite nell'osservazione precedente sono \emph{hybrid efficient}.
+\end{teor}
