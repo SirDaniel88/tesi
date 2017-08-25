@@ -336,3 +336,61 @@ Se $\tau \leq 1$ allora definiamo le proiezioni del HYBRID model come:
 \end{oss}
 \begin{teor} Le proiezioni definite nell'osservazione precedente sono \emph{hybrid efficient}.
 \end{teor}
+\subsection{Decomposizione inefficienza}
+\bigskip
+Usiamo la soluzione ottima del modello HYBRID per decomporre l'inefficienza della DMU in quattro fattori:
+\begin{equation}
+\begin{split}
+\text{inefficienza degli Input radiali:} \qquad & \alpha_1 = \frac{m_1}{m}(1 - \theta^*)\\
+\text{inefficienza degli Input non radiale:} \qquad & \alpha_2 = \Sigma^{m_2}_{i=1}\frac{s_i^{NR_{-*}}}{x^{NR}_{io}}\\
+\text{inefficienza degli Outoput radiali:} \qquad & \beta_1 = \frac{s_1}{m}(\phi^* - 1)\\
+\text{inefficienza degli Output non radiale:} \qquad & \beta_2 = \frac{1}{s} \Sigma^{s_2}_{r=1}\frac{s_r^{NR_{+*}}}{y^{NR}_{io}}\\
+\end{split}
+\end{equation}
+Possiamo definire l'inefficienza degli input e output come:
+\begin{equation}
+\begin{split}
+\text{inefficienza degli Input:} \qquad & \alpha = \alpha_1 + \alpha_2 \\
+\text{inefficienza degli Output:} \qquad & \beta = \beta_1 + \beta_2 \\
+\end{split}
+\end{equation}
+allora possiamo esprimere $\tau$ come:
+\begin{equation}
+\tau^* = \frac{1-\alpha}{1 + \beta} = \frac{1 - \alpha_1 - \alpha_2}{1 + \beta_1 + \beta_2}
+\end{equation}
+Tale espressione risulta utile nella ricerca delle cause che portano all'inefficienza della DMU in esame.
+
+\begin{oss}
+Possiamo definire il CCR e SBM model come un caso particolare del modello Hybrid e quindi possiamo comparare le relazioni tra le rispettive soluzioni ottime. Il modello Hybrid pu\'o essere trasformato in un CCR o SBM eliminando la distinzione tra input radiali e non. Mostriamo nel dettaglio quanto detto:
+\begin{equation}
+\begin{split}
+\text(CCR) \qquad & \rho^*_{CCR} = \min \frac{\theta}{\phi} \\
+\text(t.c) \qquad & \theta \boldsymbol{x_o} \geq X\boldsymbol{\lambda} \\
+& \phi \boldsymbol{x_o} \leq Y \boldsymbol{\lambda} \\
+& \theta \leq 1, \phi \geq 1, \boldsymbol{\lambda \geq 0}\\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\text(SBM) \qquad & \rho^*_{SBM} = \min \frac{\theta}{\phi} \\
+\text(t.c) \qquad & \boldsymbol{x_o} = X\boldsymbol{\lambda + s^-} \\
+& \boldsymbol{y_o} = Y\boldsymbol{\lambda - s^+} \\
+& \boldsymbol{s^- \geq 0}, \boldsymbol{s^+ \geq 0}, \boldsymbol{\lambda \geq 0}\\
+\end{split}
+\end{equation}
+In modo analogo possiamo definire i modelli orientati agli input o agli output.
+\end{oss}
+\begin{teor}
+ Utilizzando le notazioni usate nell'osservazione enunciamo le seguenti catene di disuguaglianze relative ai modelli mostrati in precedenza:
+\begin{equation}
+\begin{split}
+\rho^*_{CCR}   \geq & \rho^* \geq \rho^*_{SBM} \\
+\rho^*_{CCR-I} \geq & \rho^*_I \geq \rho^*_{SBM-I} \\
+\rho^*_{CCR-O} \geq & \rho^*_O \geq \rho^*_{SBM-O} \\
+\rho^*_{SBM-I} \geq & \rho^*_{SBM} \\
+\rho^*_{SBM-O} \geq & \rho^*_{SBM} \\
+\rho^*_{CCR-I} \geq & \rho^*_{CCR} \\
+\rho^*_{CCR-O} \geq & \rho^*_{CCR} \\
+\end{split}
+\end{equation}
+\end{teor}
