@@ -2,3 +2,50 @@
 \section{Ritorno di scala}
 \bigskip
 
+TODO: scrivere l'introduzione
+Ora consideriamo le condizioni per i ritorni di scala dei seguenti modelli
+
+\section{Il ritorno di scale del BBC-Model}
+
+Consideriamo le equazioni del BCC model:
+\begin{equation}
+\begin{split}
+\max \qquad & z = \boldsymbol{uy_o} - u_o \\
+\text{t.c} \qquad & \boldsymbol{vx_o = 1} \\
+& \boldsymbol{-vX + uY -} u_o\boldsymbol{e \leq 0} \\
+& \boldsymbol{v \geq 0, u \geq 0,} u_o \text{ qualunque} \\ 
+\end{split}
+\end{equation}
+possiamo esprime i ritorni di scala per tale modello utilizzando il seguente teorema.
+
+\begin{teor} Assumiamo che $(\boldsymbol{x_o, y_o})$ sia una punto della frontiera dell'efficienza allora abbiamo che: \\
+(i)L'Increasing returns-to-scale prevale su $(\boldsymbol{x_o, y_o})$ se e solo se $u^*_o < 0$ per ogni soluzioni ottimale. \\
+(ii)Il Decreasing returns-to-scale prevale su $(\boldsymbol{x_o, y_o})$ se e solo se $u^*_o > 0$ per ogni soluzioni ottimale.\\
+(ii)Il Constant returns-to-scale prevale su $(\boldsymbol{x_o, y_o})$ se e solo se $u^*_o = 0$ in alcune soluzioni ottimali.\\
+\end{teor}
+
+\section{Il ritorno di scale del CCR-Model}
+
+\begin{teor}
+Sia $(\boldsymbol{x_o, y_o})$ sia una punto della frontiera dell'efficienza, e consideriamo la soluzione ottima ottenuta dal CCR-Model $(\lambda^*_1, \dots, \lambda^*_n)$. Il ritorno di scale in tale punto può essere determinato dalle seguenti condizioni:\\
+(i) Se $\Sigma^n_{j = 1} \lambda^*_j = 1$ in ciascuna soluzione ottimale allora prevale il constant returns-to-scale \\
+(ii) Se $\Sigma^n_{j = 1} \lambda^*_j > 1$ in ciascuna soluzione ottimale allora prevale il decreasing returns-to-scale \\
+(iii) Se $\Sigma^n_{j = 1} \lambda^*_j < 1$ in ciascuna soluzione ottimale allora prevale l'increasing returns-to-scale \\
+\end{teor}
+
+Enunciamo adesso un teorema che mette in relazione il BBC-Model e CCR-Model.
+
+\begin{teor}
+Consideriamo le soluzioni ottimali del CCR-Model e del BCC-Model si ha che: \\
+(i) $u^*_o > 0$ per ogni soluzione ottimale del BBC-Model se e solo se $\Sigma^n_{j = 1} \hat{\lambda}^*_j > 1$ per ogni soluzione ottimale del CCR-Model corrispondente.\\
+(ii) $u^*_o < 0$ per ogni soluzione ottimale del BBC-Model se e solo se $\Sigma^n_{j = 1} \hat{\lambda}^*_j < 1$ per ogni soluzione ottimale del CCR-Model corrispondente.\\
+(iii) $u^*_o = 0$ per alcune soluzione ottimali del BBC-Model se e solo se $\Sigma^n_{j = 1} \hat{\lambda}^*_j = 1$ per alcune soluzioni ottimali del CCR-Model corrispondente.\\
+\end{teor}
+
+\section{Grandezze di scala produttive}
+
+\begin{teor} Una $DMU_o$ efficiente per il CCR-Model sarà efficiente anche per il BCC-Model model e prevale il constant returns-to-scale.
+\end{teor}
+TODO scrivere def MPSS
+\begin{teor} Consideriamo una $DMU_o$ con input e output rappresentati dai vettori $\boldsymbol{x_o, y_o}$. Si ha che una condizione necessaria per essere MPSS \'e  $\beta^*/\alpha^* = \max \beta/\alpha = 1$. In tale caso $\beta^* = \alpha^*$ e i ritorni di scala sono costanti. 
+\end{teor}
