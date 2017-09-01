@@ -44,8 +44,57 @@ Consideriamo le soluzioni ottimali del CCR-Model e del BCC-Model si ha che: \\
 
 \section{Grandezze di scala produttive}
 
-\begin{teor} Una $DMU_o$ efficiente per il CCR-Model sarà efficiente anche per il BCC-Model model e prevale il constant returns-to-scale.
+\begin{teor} Una $DMU_o$ efficiente per il CCR-Model sar\'a efficiente anche per il BCC-Model model e prevar\'a il constant returns-to-scale.
 \end{teor}
 TODO scrivere def MPSS
+\begin{definiz}Una $DMU_o$ si dice MPSS se soddisfa le seguenti condizioni:
+\begin{equation}
+\begin{split}
+\text{(i)} \qquad & \beta^* / \alpha^* \\
+\text{(ii)} \qquad & \text{tutti gli slack sono zero}\\
+\end{split}
+\end{equation}
+\end{definiz}
 \begin{teor} Consideriamo una $DMU_o$ con input e output rappresentati dai vettori $\boldsymbol{x_o, y_o}$. Si ha che una condizione necessaria per essere MPSS \'e  $\beta^*/\alpha^* = \max \beta/\alpha = 1$. In tale caso $\beta^* = \alpha^*$ e i ritorni di scala sono costanti. 
 \end{teor}
+\begin{teor} Nel BCC model un insieme di riferimento per ciascuna $DMU$ non efficiente non può includere allo stesso tempo increasing e decreasing return-to-scale DMUs.
+\end{teor}
+\begin{cor} \label{cor:return-to-scale} 
+Sia $E_o$ l'insieme di riferimento di una $DMU(\boldsymbol{x_o, y_0})$. Allora, $E_o4$ sar\'a costituita da una delle seguenti combinazioni di $DMU$ efficienti:
+\begin{equation}
+\begin{split}
+\text{(i)} \qquad & \text{Tutte le DMU sono IRS} \\
+\text{(ii)} \qquad & \text{Tutte le DMU sono CRS} \\
+\text{(iii)} \qquad & \text{Tutte le DMU sono DRD} \\
+\text{(iv)} \qquad & \text{le DMU sono IRS o CRS} \\
+\text{(v)} \qquad & \text{le DMU sono DRS o CRS} \\
+\end{split}
+\end{equation}
+dove IRS, CRS e DRS sta per increasing, constant e decresing return-to-scale rispettivamente.
+\end{cor}
+\begin{teor} \label{EQ:return-to-scale}
+Sia $(\hat{\boldsymbol{x_o}}, \hat{\boldsymbol{y_o}})$ la proiezione efficiente di una $DMU_o$ che risulti BCC-inefficient, sia $E_o$ l'insieme di riferimento relativo alla $DMU_o$. Allora si ha che:\\\\
+1. $(\boldsymbol{\hat{x_o}}, \hat{\boldsymbol{y_o}})$ \'e IRS se $E_o$ /'e costituito da $DMUs$ del tipo (i) o (iv) del Corollario \ref{cor:return-to-scale} \\\\
+2. $(\boldsymbol{\hat{x_o}}, \hat{\boldsymbol{y_o}})$ \'e DRS se $E_o$ /'e costituito da $DMUs$ del tipo (iii) o (v) del Corollario \ref{cor:return-to-scale} \\\\
+\end{teor}
+\section{Rilassamento della condizione di convessit\'a}
+\bigskip
+Possiamo estendere il BCC model rilassando la condizione di convessit\'a $\boldsymbol{e\lambda} = 1$ utilizzando:
+\begin{equation}
+L \leq \boldsymbol{ e\lambda} \leq U
+\end{equation}
+dove $L (0 \leq L \leq 1)$ e $U (1 \leq U)$ sono rispettivamente upper e lower bound per la somma dei $\lambda_j$. Notiamo che la condizione $L = 0$ e $U = \infty$ corrisponde al CCR model.
+\subsection{Increasing Returns-to-Scale (IRS) Model}
+\bigskip
+Il caso $L = 1, U = \infty$ \'e chiamato IRS o NDRS (Non decreasing Returns-to-Scale) model. In questo modello il vincolo imposto ai valori di $\boldsymbol{\lambda}$ \'e:
+\begin{equation}
+\boldsymbol{e\lambda \geq 1}
+\end{equation}
+Osserviamo che la condizione $L=1$ corrisponde al fatto che non sarà possibile ridurre i pesi della $DMU$ ma sar\'a possibile espandere quest'ultimi all'infinito (TODO inserire immagine con esempio).
+\subsection{Decreasing Returns-to-Scale (DRS) Model}
+\bigskip
+Il caso $L = 0, U = 1$ \'e chiamato DRS o NIRS (Non increasing Returns-to-Scale) model. In questo modello il vincolo imposto ai valori di $\boldsymbol{\lambda}$ \'e:
+\begin{equation}
+0 \leq \boldsymbol{e\lambda} \leq 1
+\end{equation}
+Osserviamo che la condizione $U=1$ corrisponde al fatto che non sarà possibile aumentare i pesi della $DMU$ (TODO inserire immagine con esempio).
