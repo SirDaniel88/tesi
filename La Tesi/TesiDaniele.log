@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.19)  4 SEP 2017 11:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.19)  4 SEP 2017 17:31
 entering extended mode
 **./TesiDaniele.tex
 (TesiDaniele.tex
@@ -413,7 +413,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 )
 \c@teor=\count133
 \c@definiz=\count134
-(TesiDaniele.aux (Esempi.aux) (MetodiTest.aux) (RitornoScala.aux))
+(TesiDaniele.aux (Esempi.aux) (MetodiTest.aux) (RitornoScala.aux)
+(MoltiplicatoriLimitati.aux) (VariabiliNonDiscrezionali.aux))
 \openout1 = `TesiDaniele.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
@@ -547,7 +548,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ² in font cmr10!
- <Img/GraficoSISO.png, id=86, 319.1925pt x 183.084pt>
+ <Img/GraficoSISO.png, id=106, 319.1925pt x 183.084pt>
 File: Img/GraficoSISO.png Graphic file (type png)
 
 <use Img/GraficoSISO.png>
@@ -564,7 +565,7 @@ ady used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.35 
-     ] <Img/GraficoSiSoNegozioA.png, id=107, 255.354pt x 184.2885pt>
+     ] <Img/GraficoSiSoNegozioA.png, id=127, 255.354pt x 184.2885pt>
 File: Img/GraficoSiSoNegozioA.png Graphic file (type png)
 
 <use Img/GraficoSiSoNegozioA.png>
@@ -670,35 +671,34 @@ Missing character: There is no   in font cmr10!
 
  (MoltiplicatoriLimitati.tex
 Capitolo 4.
-) [17
+[17
+
+
+
+]) [18]
+\openout2 = `VariabiliNonDiscrezionali.aux'.
+
+ (VariabiliNonDiscrezionali.tex
+Capitolo 5.
+) [19
 
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 61.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 61.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
  (TesiDaniele.aux (Esempi.aux) (MetodiTest.aux) (RitornoScala.aux)
-(MoltiplicatoriLimitati.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 61.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 61.
-
-
-Package rerunfilecheck Warning: File `TesiDaniele.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `TesiDaniele.out':
-(rerunfilecheck)             Before: 6150895B4BC588E7A04A8849741EC5A4;1398
-(rerunfilecheck)             After:  1863940A9CFA5AB464CADCADB96030B2;1534.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+(MoltiplicatoriLimitati.aux) (VariabiliNonDiscrezionali.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
+Package rerunfilecheck Info: File `TesiDaniele.out' has not changed.
+(rerunfilecheck)             Checksum: CCA624341DABEFE18429253A59DB5DF7;1708.
  ) 
 Here is how much of TeX's memory you used:
- 8234 strings out of 493323
- 120247 string characters out of 3129581
- 236447 words of memory out of 3000000
- 11464 multiletter control sequences out of 15000+200000
+ 8272 strings out of 493323
+ 120869 string characters out of 3129581
+ 237339 words of memory out of 3000000
+ 11472 multiletter control sequences out of 15000+200000
  11687 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  29i,21n,30p,799b,410s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -727,9 +727,9 @@ c/amsfonts/cm/cmsy5.pfb><C:/Users/savino/AppData/Local/Programs/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/savino/AppData/Local/Programs/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/savino/AppData/Loc
 al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on TesiDaniele.pdf (17 pages, 315520 bytes).
+Output written on TesiDaniele.pdf (19 pages, 329172 bytes).
 PDF statistics:
- 438 PDF objects out of 1000 (max. 8388607)
- 174 named destinations out of 1000 (max. 500000)
- 171 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 486 PDF objects out of 1000 (max. 8388607)
+ 195 named destinations out of 1000 (max. 500000)
+ 211 words of extra memory for PDF output out of 10000 (max. 10000000)
 

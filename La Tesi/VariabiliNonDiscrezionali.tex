@@ -1,0 +1,38 @@
+\chapter{Variabili non Discrezionali} \label{CAP:cinque}
+\bigskip
+Iniziamo questo capitolo introducendo alcune definizioni.
+\begin{definiz}
+La piena efficienza (BCC o CCR) \'e raggiunta da una $DMU_o$ se e solo se sono soddisfatte le seguenti condizioni:
+\begin{equation}
+\begin{split}
+\text{(i) } \qquad &  \theta^* = 1 \\
+\text{(ii)} \qquad & \text{tutti gli slack sono nulli}\\
+\end{split}
+\end{equation}
+\end{definiz}
+\section{NCN}
+\begin{definiz} Non-Controllable Variable Model (NCN):
+\begin{equation}
+\begin{split}
+\text{(NCN)} \qquad & \min_{\theta, \boldsymbol{\lambda}} \theta \\
+\text{t.c.} \qquad & \theta \boldsymbol{x^C_o} \geq X^C\boldsymbol{\lambda} \\
+& \boldsymbol{y^C_o} \leq Y^C\boldsymbol{\lambda} \\
+& \boldsymbol{x^N_o} = X^N\boldsymbol{\lambda} \\
+& \boldsymbol{y^N_o} = Y^N\boldsymbol{\lambda} \\
+& L \leq \boldsymbol{e\lambda} \leq U \\
+& \boldsymbol{\lambda} \geq \boldsymbol{0} \\
+\end{split}
+\end{equation}
+\end{definiz}
+\section{NDSC}
+\begin{definiz} Non-discretionary Variable Model (NDSC):
+\begin{equation}
+\begin{split}
+\text{(NDSC)} \qquad & \min \theta - \epsilon(\Sigma_{i \in D} s^-_i + \Sigma^s_{r=1} s^+_r) \\
+\text{t.c} \qquad &  \theta x_{io} = \Sigma^n_{j=1}x_ij\lambda_j + s^-_i, \qquad i \in D \\
+& x_{io} = \Sigma^n_{j=1}x_ij\lambda_j + s^-_i, \qquad i \in ND \\
+& y_{ro} = \Sigma^n_{j=1}y_rj\lambda_j - s^+_r, \qquad r = 1,\dots, s \\
+\end{split}
+\end{equation}
+\end{definiz}
+(TODO eventualmente scriverne il duale)

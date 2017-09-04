@@ -1,4 +1,62 @@
 \chapter{Modelli con moltiplicatori limitati} \label{CAP:quattro}
-\section{Ritorno di scala}
+\section{Assurance Region Method}
 \bigskip
 
+L'assurance region method consiste nell'aggiunge ad un modello DEA un vincolo del tipo:
+\begin{equation}
+L_{i,j} \leq \frac{v_j}{v_i} \leq U_{i,j}
+\end{equation}
+dove $L_{i,j}$ e $U_{i,j}$ sono il lower e l'upper bounds che il rapporto tra $v_j$ e $v_i$ pu\'o assumere. Proviamo ad esporre un esempio del metodo descritto. Supponiamo di voler usare la formulazione del CCR model con l'aggiunta del Assurance region (AR) allora abbiamo:
+\begin{equation} 
+\begin{split}
+(AR_o) \qquad & \max_{\boldsymbol{u,v}} \boldsymbol{uy_o} \\
+\text{t.c} \qquad & \boldsymbol{vx_o} = 1 \\
+& \boldsymbol{-vX + uY \leq 0 } \\
+& \boldsymbol{vP \leq 0} \\
+& \boldsymbol{uQ \leq 0} \\
+& \boldsymbol{v \geq 0, u \geq 0} \\
+\end{split}
+\end{equation}
+dove (TODO inserire le matrici P e U). Consideriamo la formulazione duale del problema esposto:
+\begin{equation}
+\begin{split}
+(DAR_o) \qquad & \min_{\boldsymbol{\lambda, \pi, \tau,} \theta} \theta \\
+\text{t.c} \qquad & \theta\boldsymbol{x_o - X\lambda + P\pi} \geq 0 \\
+& \boldsymbol{Y\lambda + Q\tau \geq y_o } \\
+& \boldsymbol{\lambda \geq 0, \pi \geq 0, \tau \geq 0} \\
+\end{split}
+\end{equation}
+\begin{definiz} Sia $(\theta^*, \boldsymbol{\lambda^*, \pi^*, \tau^*, s^{-*}, s^{+*}})$ una soluzione ottima del $DAR_o$ dove $\boldsymbol{s^{-*}, s^{+*}}$ sono rispettivamente definite da:
+\begin{equation}
+\begin{split}
+\boldsymbol{s^{-*}} & = \theta^* \boldsymbol{x_o - X \lambda^* + P\pi^*} \\
+\boldsymbol{s^{+*}} & = \boldsymbol{-y_o + Y\lambda + Q \tau^*} \\
+\end{split}
+\end{equation}
+diremo che la $DMU$ \'e \emph{AR-efficient} se e solo se valgono le seguenti uguaglianze:
+\begin{equation}
+\begin{split}
+\theta^* & = 0 \\
+\boldsymbol{s^{-*}} & = \boldsymbol{0} \\
+\boldsymbol{s^{+*}} & = \boldsymbol{0} \\
+\end{split}
+\end{equation}
+\end{definiz}
+\begin{teor} Sia $(\theta^*, \boldsymbol{\lambda^*, \pi^*, \tau^*, s^{-*}, s^{+*}})$ una soluzione $DMU$ AR-inefficient. Definiamo il suo miglioramento usando il $DAR$ model come:
+\begin{equation}
+\begin{split}
+\boldsymbol{\hat{x_o}} & = \theta^* \boldsymbol{x_o - s^{-*} + P\pi*} ( = X\lambda^*) \\
+\boldsymbol{\hat{y_o}} & = \boldsymbol{y_o + s^{+*} - Q\tau*} ( = Y\lambda^*) \\ 
+\end{split}
+\end{equation}
+si ha che il punto $(\boldsymbol{\hat{x_o}, \hat{y_o}}$ \'e AR efficient.
+\end{teor}
+\begin{oss} Consideriamo i seguenti vincoli: 
+\begin{equation}
+\begin{split}
+L_{in}(i) \leq \frac{v_i x_i}{\Sigma_j v_j x_j} \leq U_{in}(i) \qquad \forall i  \\
+L_{ou}(s) \leq \frac{u_s y_s}{\Sigma_j u_j y_j} \leq U_{ou}(s) \qquad \forall s  \\
+\end{split}
+\end{equation} 
+tali vincolo definiscono i modelli di tipo Assurance Region Global Model. (TODO eventualmente capire se continuare con il CONE-RATIO)
+\end{oss}
