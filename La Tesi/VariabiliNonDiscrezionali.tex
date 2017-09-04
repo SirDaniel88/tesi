@@ -36,3 +36,31 @@ La piena efficienza (BCC o CCR) \'e raggiunta da una $DMU_o$ se e solo se sono s
 \end{equation}
 \end{definiz}
 (TODO eventualmente scriverne il duale)
+\section{BND}
+\begin{definiz} Bounded Variable Model (BND):\\\\
+(a)Input Oriented Bounded Variable Model
+\begin{equation}
+\begin{split}
+(BND_o) \qquad & \min \theta \\
+\text{t.c} \qquad &  \theta \boldsymbol{x_{o}^C} \geq X^C\boldsymbol{\lambda} \\
+&  \boldsymbol{y_{o}^C} \leq Y^C\boldsymbol{\lambda} \\
+&  \boldsymbol{l_{o}^{N_{x}}} \leq X^N \boldsymbol{\lambda} \leq \boldsymbol{u_{o}^{N_{x}}} \\
+&  \boldsymbol{l_{o}^{N_{y}}} \leq Y^N \boldsymbol{\lambda} \leq \boldsymbol{u_{o}^{N_{y}}} \\
+&  L \leq \boldsymbol{e \lambda} \leq U \\
+&  \boldsymbol{\lambda \geq 0}   \\
+\end{split}
+\end{equation}
+(b)Output Oriented Bounded Variable Model
+\begin{equation}
+\begin{split}
+(BNDO_o) \qquad & \max \eta \\
+\text{t.c} \qquad &  \boldsymbol{x_{o}^C} \geq X^C\boldsymbol{\lambda} \\
+&  \eta \boldsymbol{y_{o}^C} \leq Y^C\boldsymbol{\lambda} \\
+&  \boldsymbol{l_{o}^{N_{x}}} \leq X^N \boldsymbol{\lambda} \leq \boldsymbol{u_{o}^{N_{x}}} \\
+&  \boldsymbol{l_{o}^{N_{y}}} \leq Y^N \boldsymbol{\lambda} \leq \boldsymbol{u_{o}^{N_{y}}} \\
+&  L \leq \boldsymbol{e \lambda} \leq U \\
+&  \boldsymbol{\lambda \geq 0}   \\
+\end{split}
+\end{equation}
+dove $(\boldsymbol{l_{o}^{N_{x}}, u_{o}^{N_{x}}})$ e $(\boldsymbol{l_{o}^{N_{y}}, u_{o}^{N_{y}}})$ sono i vettori del lower e upper bound per gli input e output non discrezionali della $DMU_o$. Infine $(\boldsymbol{x_o^N, y_o^N})$ non sono inclusi nella formula perch\'e si suppone che si trovino tra i due limiti precedentemente espressi.
+\end{definiz}
