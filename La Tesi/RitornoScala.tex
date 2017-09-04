@@ -119,3 +119,36 @@ SE = \frac{\theta^*_{CCR}}{\theta^*_{BCC}} \leq 1
 \begin{oss} Il risultato ottenuto utilizzando il CCR model \'e chiamato tecnical-efficient (TE) in quanto non tiene conto dei return-to-scale. D'altro canto il risultato del BCC model esprime la pure tecnical-efficient (PTE) (TODO concludere esempio).
 \end{oss}
 
+\subsubsection{Mix Efficiency}
+\bigskip
+Ci sono due tipi di misure di efficienza, radiale e non radiale. Consideriamo ora il modello SBM input-oriented:
+\begin{equation}
+\begin{split}
+(SBM_{in}) \qquad & \min \rho_{in} = 1 - \frac{1}{m} \Sigma^m_{i=1} s^-_i / x_{io} \\
+\text{t.c.} \qquad & \boldsymbol{x_o = X\lambda + s^-} \\
+& \boldsymbol{y_o = Y\lambda + s^+} \\
+& \boldsymbol{\lambda \geq 0, s^- \geq 0, s^+ \geq 0}\\
+\end{split}
+\end{equation}
+
+si ha che $\rho^*_{in} \leq \theta^*_{CCR}$.
+
+\begin{teor} Si ha che $\rho^*_{in} = \theta^*_{CCR}$ se e solo se il modello CCR input-oriented ha gli input-slacks uguali a zero per ogni soluzione ottimale. 
+\end{teor}
+\begin{oss} Se $\rho^*_{in} < \theta^*_{CCR}$ allora dal teorema precedente si evince che la soluzione data dal CCR model contiene un input mix-inefficient. A questo punto possiamo enunciare la seguente definizione.
+\end{oss}
+\begin{definiz} Consideriamo la soluzione ottima ottenuta dall'utilizzo del CCR e del SBM model, rispettivamente espresse da $\theta^*{CCR}$ e $\rho^*_{SBM}$. La mix-efficient \'e definita da
+\begin{equation}
+MIX = \frac{\rho^*_{SBM}}{\theta^*{CCR}}
+\end{equation}
+\end{definiz}
+\begin{oss} MIX non \'e mai maggiore di uno e possiamo decomporre l'efficienza non radiale in componente radiale e mista come:
+\begin{equation}
+\text{[Input-oriented SBM] = [Radial Eff.(TE)] x [Mix Eff. (MIX)]}
+\end{equation}
+A questo punto possiamo esprimere $\rho^*_{in}$ come:
+\begin{equation}
+\rho^*_{in} = \text{[MIX] x [PTE] x [SE]}
+\end{equation}
+dove PTE rappresenta la pure technical efficency e SE la scale efficiency.
+\end{oss}
