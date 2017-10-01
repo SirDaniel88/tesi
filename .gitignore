@@ -8,3 +8,8 @@
 *.aux
 *.gz
 *.log
+*.tex
+*.gz
+*.out
+*.log
+*.aux
