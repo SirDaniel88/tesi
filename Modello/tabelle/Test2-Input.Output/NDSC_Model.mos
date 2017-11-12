@@ -1,0 +1,89 @@
+model NDSC_Model
+uses "mmxprs";
+
+parameters
+	FILE_DATA =   "C:/Users/ConsigliaA/Documents/GitHub/tesi/Modello/tabelle/Test2-Input.Output/input-output.txt"
+	k = 20
+end-parameters
+
+declarations
+	
+	s:integer
+	m_d:integer
+	n:integer
+	e:real
+	
+end-declarations
+
+initializations from FILE_DATA
+	s
+	m_d
+	n
+end-initializations
+
+declarations
+	
+	rowx_d = 1..m_d
+	rowy = 1..s
+	col = 1..n
+	
+	v_d: array(rowx_d) of mpvar
+	u: array(rowy) of mpvar
+	y:  array( rowy,col ) of integer
+	x_d:  array( rowx_d,col ) of integer
+	
+end-declarations
+
+initializations from "mmsheet.xls:Input-Output-Non-Discrezionali.xls"
+	y as "noindex;outputNonDiscrezionali"
+end-initializations
+
+initializations from "mmsheet.xls:Input-Output-Discrezionali.xls"
+	x_d as "noindex;inputDiscrezionali" 
+end-initializations
+
+forall(j in col)
+	sum(i in rowy) u(i) * y(i,j) - sum(i in rowx_d) v_d(i) * x_d(i,j) <=0
+
+forall(j in col)
+	sum(i in rowx_d) v_d(i) * x_d(i,j) = 1
+
+forall(i in rowx_d)
+	v_d(i) >= e
+
+forall(i in rowy)
+	u(i) >= e
+	
+teta:= sum(i in rowy) u(i) * y(i,k)
+
+maximize(teta)
+
+!STAMPASOL
+writeln( 'teta',k,'= ', getsol(teta))
+
+	fopen("NDSC_Model_Slack.txt",F_OUTPUT+F_APPEND)
+	
+	write('v_d_',k,'= { ')
+	forall(i in rowx_d)
+	write(getsol(v_d(i)),' ')
+	write('}')
+	writeln
+	
+	write('u_',k,'= { ')
+	forall(i in rowy)
+	write(getsol(u(i)),' ')
+	write('}')
+	writeln
+	
+	fclose(F_OUTPUT)
+
+
+fopen("NDSC_Model_Solution.txt",F_OUTPUT+F_APPEND)
+writeln( 'teta',k,'= ', getsol(teta))
+
+fclose(F_OUTPUT)
+
+
+end-model
+
+end-model

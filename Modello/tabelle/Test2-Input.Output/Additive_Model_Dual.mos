@@ -2,7 +2,7 @@ model Additive_Model_Dual
 uses "mmxprs"; !gain access to the Xpress-Optimizer solver
 
 parameters
-	FILE_DATA =  "C:/Users/ConsigliaA/Desktop/tesiDaniele/tabelle/Test3-Input.Output/input-output.txt"
+	FILE_DATA =  "C:/Users/ConsigliaA/Desktop/tesiDaniele/tabelle/Test2-Input.Output/input-output.txt"
 	k = 2
 end-parameters
 
