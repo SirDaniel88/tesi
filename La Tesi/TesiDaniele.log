@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.4)  1 OCT 2017 10:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.4)  12 NOV 2017 11:52
 entering extended mode
 **TesiDaniele.tex
 (TesiDaniele.tex
@@ -498,7 +498,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ² in font cmr10!
 
-<Img/GraficoSISO.png, id=118, 319.1925pt x 183.084pt>
+<Img/GraficoSISO.png, id=126, 319.1925pt x 183.084pt>
 File: Img/GraficoSISO.png Graphic file (type png)
 
 <use Img/GraficoSISO.png>
@@ -515,7 +515,7 @@ already used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.35 
-     ] <Img/GraficoSiSoNegozioA.png, id=139, 255.354pt x 184.2885pt>
+     ] <Img/GraficoSiSoNegozioA.png, id=147, 255.354pt x 184.2885pt>
 File: Img/GraficoSiSoNegozioA.png Graphic file (type png)
 
 <use Img/GraficoSiSoNegozioA.png>
@@ -655,31 +655,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
 
 
-]) [22]
+]
+Underfull \hbox (badness 10000) in paragraph at lines 36--38
+
+ []
+
+) [22]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
  (TesiDaniele.aux (Esempi.aux) (MetodiTest.aux) (RitornoScala.aux)
 (MoltiplicatoriLimitati.aux) (VariabiliNonDiscrezionali.aux) (TestSvolti.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 65.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
+Package rerunfilecheck Info: File `TesiDaniele.out' has not changed.
+(rerunfilecheck)             Checksum: 9A711F55ECD873CBD9F1C52BEFF4141C;2014.
 
-
-Package rerunfilecheck Warning: File `TesiDaniele.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `TesiDaniele.out':
-(rerunfilecheck)             Before: 12DA5984C6E9B36F91EB0EF7DE9AFEED;1872
-(rerunfilecheck)             After:  F3988F8F832349243CA609269955916F;1938.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8131 strings out of 493673
- 116473 string characters out of 3141515
+ 8134 strings out of 493673
+ 116510 string characters out of 3141515
  231934 words of memory out of 3000000
- 11130 multiletter control sequences out of 15000+200000
+ 11132 multiletter control sequences out of 15000+200000
  11687 words of font info for 45 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  29i,21n,30p,797b,417s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -705,9 +704,9 @@ x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x8
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on TesiDaniele.pdf (22 pages, 350184 bytes).
+Output written on TesiDaniele.pdf (22 pages, 351153 bytes).
 PDF statistics:
- 521 PDF objects out of 1000 (max. 8388607)
- 206 named destinations out of 1000 (max. 500000)
- 235 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 528 PDF objects out of 1000 (max. 8388607)
+ 207 named destinations out of 1000 (max. 500000)
+ 251 words of extra memory for PDF output out of 10000 (max. 10000000)
 
