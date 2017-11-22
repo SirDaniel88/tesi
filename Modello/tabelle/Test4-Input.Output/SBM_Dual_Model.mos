@@ -2,7 +2,7 @@ model SBM_Dual_Model
 uses "mmxprs"; !gain access to the Xpress-Optimizer solver
 
 parameters
-	FILE_DATA =   "C:/Users/ConsigliaA/Desktop/tesiDaniele/tabelle/Test4-Input.Output/input-output.txt"
+	FILE_DATA =   "input-output.txt"
 	k = 2
 end-parameters
 

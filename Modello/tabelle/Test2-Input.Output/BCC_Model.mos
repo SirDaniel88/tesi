@@ -2,7 +2,7 @@ model BCC_Model
 uses "mmxprs"; !gain access to the Xpress-Optimizer solver
 
 parameters
-	FILE_DATA =  "C:/Users/ConsigliaA/Desktop/tesiDaniele/tabelle/Test2-Input.Output/input-output.txt"
+	FILE_DATA =  "C:/Users/ConsigliaA/Documents/GitHub/tesi/Modello/tabelle/Test2-Input.Output/input-output.txt"
 	k = 23
 end-parameters
 
