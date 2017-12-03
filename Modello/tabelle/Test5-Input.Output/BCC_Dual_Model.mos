@@ -1,0 +1,80 @@
+model BCC_Dual_Model
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+parameters
+	FILE_DATA =  "C:/Users/ConsigliaA/Desktop/tesiDaniele/tabelle/Test3-Input.Output/input-output.txt"
+	k = 12
+end-parameters
+
+declarations
+	
+	s:integer
+	m:integer
+	n:integer
+	
+end-declarations
+
+initializations from FILE_DATA
+	s
+	m
+	n
+end-initializations
+
+declarations
+	
+	row1 = 1..m
+	row2 = 1..s
+	col = 1..n
+	
+	v: array( row1 ) of mpvar
+	u: array( row2 ) of mpvar
+	u0: mpvar
+	
+	y:  array( row2,col ) of integer
+	x:  array( row1,col ) of integer
+	
+end-declarations
+
+initializations from "mmsheet.xls:Input-Output.xls"
+	y as "noindex;Output"
+	x as "noindex;Input"
+end-initializations
+
+sum(i in row1)v(i) * x(i,k) = 1
+
+forall(j in col)
+	-sum(i in row1)v(i)*x(i,j) + sum(i in row2)u(i)*y(i,j)<= u0
+
+forall(i in row1)
+	v(i)>=0
+	
+forall(i in row2)
+	u(i)>=0
+	 
+z:= sum(i in row2)u(i)*y(i,k) - u0
+
+maximize(z)
+
+fopen("BCC_Dual_Model_Solution.txt",F_OUTPUT+F_APPEND)
+
+write('v_',k,'= { ')
+forall(i in row1)
+write(getsol(v(i)),' ')
+write('}')
+writeln
+
+write('u_',k,'= { ')
+forall(i in row2)
+write(getsol(u(i)),' ')
+write('}')
+writeln
+
+write('u0',k,'= { ',getsol(u0),' }')
+writeln
+
+writeln('z',k,'= ', getsol(z))
+writeln
+
+fclose(F_OUTPUT)
+
+end-model

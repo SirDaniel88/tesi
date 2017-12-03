@@ -1,0 +1,96 @@
+model Additive_Model
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+parameters
+	FILE_DATA =  "input-output.txt"
+	k = 2
+end-parameters
+
+declarations
+	
+	s:integer
+	m:integer
+	n:integer
+	
+end-declarations
+
+initializations from FILE_DATA
+	s
+	m
+	n
+end-initializations
+
+declarations
+	
+	row1 = 1..m
+	row2 = 1..s
+	col = 1..n
+	su = n+m+s+2
+	out = 1..su
+	
+	s_meno: array( row1 ) of mpvar
+	s_piu: array( row2 ) of mpvar
+	lamda: array( col ) of mpvar
+	
+	y:  array( row2,col ) of integer
+	x:  array( row1,col ) of integer
+	output: array(out) of string
+	
+end-declarations
+
+initializations from "mmsheet.xlsx:Input-Output.xlsx"
+	y as "noindex;Output"
+	x as "noindex;Input"
+end-initializations
+
+forall(j in row1) do
+	x(j,k) = sum(i in col) x(j, i)*lamda(i) + s_meno(j)
+end-do	
+
+forall(j in row2) do
+	sum(i in col)y(j,i)*lamda(i) - s_piu(j) = y(j,k)
+end-do
+
+sum(j in col) lamda(j) = 1
+
+forall(j in col) do 
+	lamda(j) >= 0
+end-do
+
+forall(j in row1)
+	s_meno(j) >= 0
+	
+forall(j in row2)
+	s_piu(j) >= 0
+
+z:= sum(j in row1) s_meno(j) + sum(i in row2) s_piu(i)
+
+maximize(z)
+
+forall(i in col)
+	output(i) := string(getsol(lamda(i)))
+
+forall(i in row1)
+	output(i) := string(getsol(s_meno(i)))
+
+forall(i in row2)
+	output(i) := string(getsol(s_piu(i)))
+
+output(n+m+s+1) := string(getsol(z))
+
+case getprobstat of
+  XPRS_OPT: status:="Optimum found"
+  XPRS_UNF: status:="Unfinished"
+  XPRS_INF: status:="Infeasible"
+  XPRS_UNB: status:="Unbounded"
+  XPRS_OTH: status:="Failed"
+  else status:="???"
+end-case
+
+output(n+m+s+2) := status;
+
+initializations to "mmsheet.xlsx:Input-Output.xlsx"
+  output as 'noindex;ADDITIVE_DMU_'+ k
+end-initializations
+
+end-model

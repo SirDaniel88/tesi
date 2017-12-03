@@ -1,0 +1,79 @@
+model SBM_Dual_Model
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+parameters
+	FILE_DATA =   "C:/Users/ConsigliaA/Desktop/tesiDaniele/tabelle/Test3-Input.Output/input-output.txt"
+	k = 2
+end-parameters
+
+declarations
+	
+	s:integer
+	m:integer
+	n:integer
+	
+end-declarations
+
+initializations from FILE_DATA
+	s
+	m
+	n
+end-initializations
+
+declarations
+	
+	row1 = 1..m
+	row2 = 1..s
+	col = 1..n
+	
+	v: array( row1 ) of mpvar
+	u: array( row2 ) of mpvar
+	epsilon: mpvar
+	
+	y:  array( row2,col ) of real
+	x:  array( row1,col ) of real
+	
+end-declarations
+
+initializations from "mmsheet.xls:Input-Output.xls"
+	y as "noindex;Output"
+	x as "noindex;Input"
+end-initializations
+
+epsilon + sum(i in row1) v(i)*x(i,k) - sum(j in row2) u(j) * y(j,k) = 1
+	
+forall(i in col)
+	sum(j in row2) u(j) * y(j, i) - sum(j in row1) v(j) * x(j,i) <= 0
+	
+forall(j in row1)
+	v(j) >= (1/m) * (1/x(j,k))
+	
+forall(j in row2)
+	u(j) >= (epsilon/s) * (1/y(j,k))	
+	
+maximize(epsilon)
+
+!STAMPASOL
+fopen("SBM_Dual_Model_V.txt",F_OUTPUT+F_APPEND)
+
+write('v_',k,'= { ')
+forall(i in row1)
+write(getsol(v(i)),' ')
+write('}')
+writeln
+fclose(F_OUTPUT)
+
+fopen("SBM_Dual_Model_U.txt",F_OUTPUT+F_APPEND)
+write('u_',k,'= { ')
+forall(i in row2)
+write(getsol(u(i)),' ')
+write('}')
+writeln
+fclose(F_OUTPUT)
+
+fopen("SBM_Dual_Model_Solution.txt",F_OUTPUT+F_APPEND)
+writeln( 'epsilon',k,'= ', getsol(epsilon))
+
+fclose(F_OUTPUT)
+
+end-model

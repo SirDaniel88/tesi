@@ -11,14 +11,26 @@ declarations
 	s: mpvar
 	
 end-declarations
-	
+
 s >= 5
+
+s<= 3
 
 z:= s*u
 
 maximize(z)
 
-!STAMPASOL
-writeln( 'teta',k,'= ', getsol(z))
+case getprobstat of
+  XPRS_OPT: status:="Optimum found"
+  XPRS_UNF: status:="Unfinished"
+  XPRS_INF: status:="Infeasible"
+  XPRS_UNB: status:="Unbounded"
+  XPRS_OTH: status:="Failed"
+  else status:="???"
+ end-case
 
+ writeln("Problem status: ", status)
+
+!STAMPASOL
+writeln( 'teta',k,'= ', string(getsol(z)))
 end-model
