@@ -2,8 +2,9 @@ model BCC_Model
 uses "mmxprs"; !gain access to the Xpress-Optimizer solver
 
 parameters
-	FILE_DATA =  "C:/Users/ConsigliaA/Desktop/tesiDaniele/tabelle/Test3-Input.Output/input-output.txt"
-	k = 23
+	w = "1"
+	FILE_DATA =  "input-output-" + w + ".txt"
+	k = 2
 end-parameters
 
 declarations
@@ -25,6 +26,8 @@ declarations
 	row1 = 1..m
 	row2 = 1..s
 	col = 1..n
+	su = n+m+s+2
+	out = 1..su
 	
 	teta: mpvar
 	lamda: array( col ) of mpvar
@@ -33,12 +36,13 @@ declarations
 	
 	y:  array( row2,col ) of integer
 	x:  array( row1,col ) of integer
+	output: array(out) of string
 	
 end-declarations
 
-initializations from "mmsheet.xls:Input-Output.xls"
-	y as "noindex;Output"
-	x as "noindex;Input"
+initializations from "mmsheet.xlsx:Input-Output.xlsx"
+	y as "noindex;Output"+w
+	x as "noindex;Input"+w
 end-initializations
 
 forall(j in row1) do
@@ -67,41 +71,35 @@ if(getsol(teta)=1) then
 		w2(i):= s_piu(i) = sum(j in col)y(i,j)*lamda(j) - y(i,k)
 	end-do
 	
-w:= sum(i in row1) s_meno(i) + sum(i in row2) s_piu(i)	
-maximize(w)
-
-	fopen("BCC_Model_Slack.txt",F_OUTPUT+F_APPEND)
+	seco := sum(i in row1) s_meno(i) + sum(i in row2) s_piu(i)	
+	maximize(seco)
 	
-	write('s_meno_',k,'= { ')
 	forall(i in row1)
-	write(getsol(s_meno(i)),' ')
-	write('}')
-	writeln
+		output(i + n) := string(getsol(s_meno(i)))
 	
-	write('s_piu_',k,'= { ')
 	forall(i in row2)
-	write(getsol(s_piu(i)),' ')
-	write('}')
-	writeln
+		output(i + n + m) := string(getsol(s_piu(i)))
 	
-	fclose(F_OUTPUT)
 end-if	
 
-!STAMPASOL
-fopen("BCC_Model_Lamda.txt",F_OUTPUT+F_APPEND)
-
-
-write('lamda_',k,'= { ')
 forall(i in col)
-write(getsol(lamda(i)),' ')
-write('}')
-writeln
-fclose(F_OUTPUT)
+	output(i) := string(getsol(lamda(i)))
 
-fopen("BCC_Model_Solution.txt",F_OUTPUT+F_APPEND)
-writeln( 'teta',k,'= ', getsol(teta))
+output(n+m+s+1) := string(getsol(teta))
 
-fclose(F_OUTPUT)
+case getprobstat of
+  XPRS_OPT: status:="Optimum found"
+  XPRS_UNF: status:="Unfinished"
+  XPRS_INF: status:="Infeasible"
+  XPRS_UNB: status:="Unbounded"
+  XPRS_OTH: status:="Failed"
+  else status:="???"
+end-case
 
+output(n+m+s+2) := status;
+
+initializations to "mmsheet.xlsx:Soluzioni-"+w+".xlsx"
+  output as 'noindex;BCC_DMU_' + k
+end-initializations
 
 end-model
