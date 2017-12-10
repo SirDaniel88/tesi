@@ -34,8 +34,8 @@ declarations
 	s_piu: array(row2) of mpvar
 	s_meno: array(row1) of mpvar
 	
-	y:  array( row2,col ) of integer
-	x:  array( row1,col ) of integer
+	y:  array( row2,col ) of real
+	x:  array( row1,col ) of real
 	output: array(out) of string
 	
 end-declarations
