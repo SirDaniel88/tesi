@@ -4,6 +4,7 @@ uses "mmxprs"; !gain access to the Xpress-Optimizer solver
 parameters
 	w = "1"
 	FILE_DATA =  "input-output-" + w + ".txt"
+	k = 2
 end-parameters
 
 declarations
@@ -31,6 +32,8 @@ declarations
 	row1_nr = 1..m_nr
 	row2_nr = 1..s_nr
 	col = 1..n
+	su = n+m_r*2+4
+	out = 1..su
 	
 	Teta: mpvar
 	Mi: mpvar
@@ -45,10 +48,11 @@ declarations
 	s: integer
 	s_div: real
 	uno_s: real
-	y:  array( row2_r,col ) of integer
-	x:  array( row1_r,col ) of integer
-	y_nr:  array( row2_nr,col ) of integer
-	x_nr:  array( row1_nr,col ) of integer
+	y:  array( row2_r,col ) of real
+	x:  array( row1_r,col ) of real
+	y_nr:  array( row2_nr,col ) of real
+	x_nr:  array( row1_nr,col ) of real
+	output: array(out) of string
 	
 end-declarations
 

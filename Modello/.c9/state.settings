@@ -1,0 +1,326 @@
+{
+    "console": {
+        "@expanded": true,
+        "@height": "300",
+        "@maximized": "false",
+        "json()": {
+            "meta": {
+                "accessList": [
+                    "tab1",
+                    "tab5",
+                    "tab3"
+                ]
+            },
+            "name": "pane1",
+            "nodes": [
+                {
+                    "type": "tab",
+                    "name": "tab1",
+                    "path": "",
+                    "className": [
+                        "tab1"
+                    ],
+                    "document": {
+                        "filter": true,
+                        "title": "tabelle/Test1-Input.Output/Additive_Model.mos - Idle",
+                        "tooltip": "tabelle/Test1-Input.Output/Additive_Model.mos - Idle",
+                        "output": {
+                            "id": "output899090",
+                            "width": 681,
+                            "height": 268,
+                            "scrollTop": -1,
+                            "config": {
+                                "runner": "Mosel",
+                                "command": "tabelle/Test1-Input.Output/Additive_Model.mos",
+                                "debug": false,
+                                "toolbar": true,
+                                "name": ""
+                            }
+                        },
+                        "hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                        "meta": {
+                            "timestamp": 1514557679640
+                        },
+                        "changed": false
+                    },
+                    "editorType": "output",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab3",
+                    "path": "",
+                    "className": [
+                        "tab3"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1514558168437
+                        },
+                        "filter": true,
+                        "title": "tabelle/Test1-Input.Output/BCC_Output_Oriented.mos - Idle",
+                        "tooltip": "tabelle/Test1-Input.Output/BCC_Output_Oriented.mos - Idle",
+                        "output": {
+                            "id": "output939980",
+                            "width": 630,
+                            "height": 268,
+                            "config": {
+                                "runner": "Mosel",
+                                "command": "tabelle/Test1-Input.Output/BCC_Output_Oriented.mos",
+                                "debug": false,
+                                "toolbar": true,
+                                "name": ""
+                            }
+                        }
+                    },
+                    "editorType": "output",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab5",
+                    "path": "",
+                    "className": [
+                        "tab5"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1514558404432
+                        },
+                        "filter": true,
+                        "title": "tabelle/Test2-Input.Output/TestErroreXpress.mos - Stopped",
+                        "tooltip": "tabelle/Test2-Input.Output/TestErroreXpress.mos - Stopped",
+                        "output": {
+                            "id": "output188060",
+                            "width": 630,
+                            "height": 268,
+                            "config": {
+                                "runner": "Mosel",
+                                "command": "tabelle/Test2-Input.Output/TestErroreXpress.mos",
+                                "debug": false,
+                                "toolbar": true
+                            }
+                        }
+                    },
+                    "editorType": "output",
+                    "active": true
+                }
+            ],
+            "skin": "editor_tab",
+            "skinset": "default",
+            "type": "pane"
+        }
+    },
+    "ext": {
+        "counters": {
+            "@ace": 1,
+            "@acestatus": 1,
+            "@datagrid": 1,
+            "@divider": 5,
+            "@document": 7,
+            "@form": 4,
+            "@menu": 5,
+            "@menuitem": 12,
+            "@pane": 2,
+            "@preferences": 1,
+            "@session": 7,
+            "@tab": 7,
+            "@undoManager": 7,
+            "@welcome": 1
+        }
+    },
+    "findinfiles": {
+        "@console": "true",
+        "@matchcase": "false",
+        "@regex": "false",
+        "@scope": "selection",
+        "@wholeword": "false"
+    },
+    "menus": {
+        "@minimized": "false"
+    },
+    "nak": {
+        "@installed": true
+    },
+    "panecycle": {
+        "json()": [
+            "tab6",
+            "tab5"
+        ]
+    },
+    "panels": {
+        "@active-left": "tree",
+        "@active-right": "debugger",
+        "commands.panel": {
+            "@enabled": "true",
+            "@name": "commands.panel"
+        },
+        "debugger": {
+            "@enabled": "true",
+            "@name": "debugger"
+        },
+        "fico.om.sidebar": {
+            "@enabled": "true",
+            "@name": "fico.om.sidebar"
+        },
+        "navigate": {
+            "@enabled": "true",
+            "@name": "navigate"
+        },
+        "outline": {
+            "@enabled": "true",
+            "@name": "outline"
+        },
+        "tree": {
+            "@enabled": "true",
+            "@name": "tree"
+        }
+    },
+    "projecttree": {
+        "expanded": {
+            "json()": [
+                "/",
+                "/tabelle"
+            ]
+        }
+    },
+    "recentfiles": {
+        "json()": []
+    },
+    "tabs": {
+        "json()": {
+            "focus": "tab6",
+            "meta": {
+                "accessList": [
+                    "tab6",
+                    "tab4",
+                    "tab2",
+                    "tab0"
+                ]
+            },
+            "name": "pane0",
+            "nodes": [
+                {
+                    "type": "tab",
+                    "name": "tab0",
+                    "path": "/tabelle/Test1-Input.Output/Additive_Model.mos",
+                    "className": [
+                        "tab0"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "filter": true,
+                        "title": "Additive_Model.mos",
+                        "tooltip": "/tabelle/Test1-Input.Output/Additive_Model.mos",
+                        "ace": {
+                            "folds": [],
+                            "scrolltop": 806.7000546455383,
+                            "scrollleft": 0,
+                            "selection": {
+                                "start": {
+                                    "row": 60,
+                                    "column": 14
+                                },
+                                "end": {
+                                    "row": 60,
+                                    "column": 14
+                                },
+                                "isBackwards": false
+                            },
+                            "options": {
+                                "guessTabSize": true,
+                                "useWrapMode": false,
+                                "wrapToView": true
+                            },
+                            "firstLineState": {
+                                "row": 55,
+                                "state": "start",
+                                "mode": "plugins/fico.ide.language.mosel/mode/mosel"
+                            }
+                        },
+                        "meta": {
+                            "timestamp": 1514557778693
+                        }
+                    },
+                    "editorType": "ace",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab2",
+                    "path": "/tabelle/Test1-Input.Output/BCC_Output_Oriented.mos",
+                    "className": [
+                        "tab2"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1514558198530
+                        },
+                        "filter": true,
+                        "title": "BCC_Output_Oriented.mos",
+                        "tooltip": "/tabelle/Test1-Input.Output/BCC_Output_Oriented.mos",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab4",
+                    "path": "/tabelle/Test2-Input.Output/TestErroreXpress.mos",
+                    "className": [
+                        "tab4"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1514479311381
+                        },
+                        "filter": true,
+                        "title": "TestErroreXpress.mos",
+                        "tooltip": "/tabelle/Test2-Input.Output/TestErroreXpress.mos",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab6",
+                    "path": "",
+                    "className": [
+                        "tab6",
+                        "focus"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1514558425227
+                        },
+                        "filter": true,
+                        "title": "Preferences",
+                        "preferences": {
+                            "activePanel": "preferences.themes"
+                        }
+                    },
+                    "editorType": "preferences",
+                    "active": true
+                }
+            ],
+            "skin": "editor_tab",
+            "skinset": "default",
+            "type": "pane"
+        }
+    },
+    "tree_selection": {
+        "json()": [
+            "/"
+        ]
+    },
+    "welcome": {
+        "@first": true
+    }
+}
