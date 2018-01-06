@@ -9,22 +9,22 @@ end-parameters
 
 declarations
 	
-	s_r:integer
-	m_r:integer
+	s:integer
+	m:integer
 	n:integer
 	
 end-declarations
 
 initializations from FILE_DATA
-	s_r
-	m_r
+	s
+	m
 	n
 end-initializations
 
 declarations
 	
-	row1_r = 1..m_r
-	row2_r = 1..s_r
+	row1_r = 1..m
+	row2_r = 1..s
 	col = 1..n
 	su = n+4
 	out = 1..su
@@ -34,10 +34,8 @@ declarations
 	Lamda: array( col ) of mpvar
 	t: mpvar
 	
-	m: integer
 	m_div: real
 	uno_m: real
-	s: integer
 	s_div: real
 	uno_s: real
 	y:  array( row2_r,col ) of real
@@ -51,12 +49,7 @@ initializations from "mmsheet.xlsx:Input-Output.xlsx"
 	x as "noindex;Input"+w
 end-initializations
 
-
-m:= m_r
-m_div:= m_r/m
 uno_m:= 1/m
-s:= s_r
-s_div:= s_r/s
 uno_s:= 1/s
 
 forall(j in row1_r)
@@ -71,11 +64,9 @@ Mi >= t
 forall(i in col)
 	Lamda(i) >= 0
 
-t + s_div * ( Mi - t ) + uno_s  = 1
- 
-teta:= t- (m_div * (t - Teta)) - uno_m	 
+Mi + uno_s  = 1
 	 
-minimize(teta)
+minimize(Teta)
 
 forall(i in col)
 	output(i) := string(getsol(Lamda(i)))

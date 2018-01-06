@@ -7,6 +7,7 @@ mosel -c "load BCC_Output_Oriented;run 'k= %%A', 'w = "4" '"
 mosel -c "load CCR_Dual_Model;run 'k= %%A', 'w = "4" '"
 mosel -c "load CCR_Output_Oriented;run 'k= %%A', 'w = "4" '"
 mosel -c "load SBM_Dual_Model;run 'k= %%A', 'w = "4" '"
+mosel -c "load Hybrid_Efficient_Model_No_Radiant;run 'k= %%A', 'w = "4" '"
 )
 echo fine esecuzione
 pause
