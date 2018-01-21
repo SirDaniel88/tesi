@@ -1,0 +1,100 @@
+model NDSC_Model
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+parameters
+	w = "8"
+	FILE_DATA =  "input-output-" + w + ".txt"
+	k = 2
+end-parameters
+
+declarations
+	
+	s:integer
+	m_d:integer
+	m_nd:integer
+	n:integer
+	ep: real
+	complex_cost: real
+end-declarations
+
+initializations from FILE_DATA
+	s
+	m_d
+	m_nd
+	n
+	ep
+end-initializations
+
+declarations
+	
+	row_nd = 1..m_nd
+	row_d = 1..m_d
+	row2 = 1..s
+	col = 1..n
+	su = m_nd + m_d + s + 2
+	out = 1..su
+	
+	v_nd: array( row_nd ) of mpvar
+	v_d: array( row_d ) of mpvar
+	u: array( row2 ) of mpvar
+	
+	y:  array( row2,col ) of real
+	x_d:  array( row_d,col ) of real
+	x_nd:  array( row_nd,col ) of real
+	output: array(out) of string
+	
+end-declarations
+
+initializations from "mmsheet.xlsx:Input-Output.xlsx"
+	y as "noindex;Output"+w
+	x_d as "noindex;Input_d"+w
+	x_nd as "noindex;Input_nd"+w
+end-initializations
+
+forall(j in col) do
+	sum(i in row2) u(i) * y(i,j) - sum(q in row_nd) v_nd(q)*x_nd(q,j) - sum(o in row_d) v_d(o) * x_d(o,j)<= 0
+end-do	
+
+sum(o in row_d) v_d(o) +  sum(q in row_nd) v_nd(q) = 1
+
+forall(o in row_d) do 
+	v_d(o) >= ep
+end-do
+
+forall(i in row2)
+	u(i) >= ep
+	
+forall(q in row_nd)
+	v_nd(q) >= ep 
+
+z:= sum(j in row2) u(j) * y(j,k) - complex_cost * sum(i in row_nd) v_nd(i) * x_nd(i,k)
+
+maximize(z)
+
+forall(i in row_d)
+	output(i) := string(getsol(v_d(i)))
+
+forall(i in row_nd)
+	output(i + m_d) := string(getsol(v_nd(i)))
+
+forall(i in row2)
+	output(i + m_nd + m_d) := string(getsol(u(i)))
+
+output(m_nd + m_d+ s +1) := string(getsol(z))
+
+case getprobstat of
+  XPRS_OPT: status:="Optimum found"
+  XPRS_UNF: status:="Unfinished"
+  XPRS_INF: status:="Infeasible"
+  XPRS_UNB: status:="Unbounded"
+  XPRS_OTH: status:="Failed"
+  else status:="???"
+end-case
+
+output(m_nd + m_d + s + 2) := status;
+
+initializations to "mmsheet.xlsx:Soluzioni-"+w+".xlsx"
+  output as 'noindex;NDSC_DMU_' + k
+end-initializations
+
+end-model
