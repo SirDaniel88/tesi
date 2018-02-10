@@ -2,6 +2,7 @@ model SBM_Dual_Model
 uses "mmxprs"; !gain access to the Xpress-Optimizer solver
 
 parameters
+	h = "1"
 	w = "1"
 	FILE_DATA =  "input-output-" + w + ".txt"
 	k = 2
@@ -39,7 +40,7 @@ declarations
 	
 end-declarations
 
-initializations from "mmsheet.xlsx:Input-Output.xlsx"
+initializations from "mmsheet.xlsx:Input-Output-" + h + ".xlsx"
 	y as "noindex;Output"+w
 	x as "noindex;Input"+w
 end-initializations
@@ -76,7 +77,7 @@ end-case
 
 output(m+s+2) := status;
 
-initializations to "mmsheet.xlsx:Soluzioni-"+w+".xlsx"
+initializations to "mmsheet.xlsx:test"+h+"/Soluzioni-"+w+".xlsx"
   output as 'noindex;SBM_DMU_' + k
 end-initializations
 
