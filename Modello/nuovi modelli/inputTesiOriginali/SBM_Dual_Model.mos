@@ -1,0 +1,85 @@
+model SBM_Dual_Model
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+parameters
+	h = "1"
+	w = "1"
+	FILE_DATA =  "input-output-" + w + ".txt"
+	k = 2
+end-parameters
+
+declarations
+	
+	s:integer
+	m:integer
+	n:integer
+	
+end-declarations
+
+initializations from FILE_DATA
+	s
+	m
+	n
+end-initializations
+
+declarations
+	
+	row1 = 1..m
+	row2 = 1..s
+	col = 1..n
+	su = m+s+2
+	out = 1..su
+	
+	v: array( row1 ) of mpvar
+	u: array( row2 ) of mpvar
+	epsilon: mpvar
+	
+	y:  array( row2,col ) of real
+	x:  array( row1,col ) of real
+	output: array(out) of string
+	
+end-declarations
+
+initializations from "mmsheet.xlsx:Input-Output-" + h + ".xlsx"
+	y as "noindex;Output"+w
+	x as "noindex;Input"+w
+end-initializations
+
+epsilon + sum(i in row1) v(i)*x(i,k) - sum(j in row2) u(j) * y(j,k) = 1
+	
+forall(i in col)
+	sum(j in row2) u(j) * y(j, i) - sum(j in row1) v(j) * x(j,i) <= 0
+	
+forall(j in row1)
+	v(j) >= (1/m) * (1/x(j,k))
+	
+forall(j in row2)
+	u(j) >= (epsilon/s) * (1/y(j,k))	
+	
+maximize(epsilon)
+
+forall(i in row1)
+		output(i) := string(getsol(v(i)))
+
+forall(i in row2)
+		output(m + i) := string(getsol(u(i)))
+
+output(m+s+1) := string(getsol(epsilon))
+
+case getprobstat of
+  XPRS_OPT: status:="Optimum found"
+  XPRS_UNF: status:="Unfinished"
+  XPRS_INF: status:="Infeasible"
+  XPRS_UNB: status:="Unbounded"
+  XPRS_OTH: status:="Failed"
+  else status:="???"
+end-case
+
+output(m+s+2) := status;
+
+initializations to "mmsheet.xlsx:test"+h+"/Soluzioni-"+w+".xlsx"
+  output as 'noindex;SBM_DMU_' + k
+end-initializations
+
+end-model
+
