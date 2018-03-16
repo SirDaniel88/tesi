@@ -42,6 +42,7 @@ declarations
 	y:  array( row2_r,col ) of real
 	x:  array( row1_r,col ) of real
 	output: array(out) of string
+	soluzione : string
 	
 end-declarations
 
@@ -78,6 +79,8 @@ output(n+2) := string(getsol(Mi))
 
 output(n+3) := string(getsol(t))
 
+soluzione := string(getsol(Teta))
+
 case getprobstat of
   XPRS_OPT: status:="Optimum found"
   XPRS_UNF: status:="Unfinished"
@@ -91,6 +94,10 @@ output(n+4) := status;
 
 initializations to "mmsheet.xlsx:test"+h+"/Soluzioni-"+w+".xlsx"
   output as 'noindex;HYBRID_DMU_' + k
+end-initializations
+
+initializations to "mmsheet.xlsx:test"+h+"/DMU/dmu-"+k+".xlsx"
+  soluzione as 'noindex;HYBRID_' + w
 end-initializations
 
 end-model

@@ -38,6 +38,7 @@ declarations
 	y:  array( row2,col ) of real
 	x:  array( row1,col ) of real
 	output: array(out) of string
+	soluzione : string
 	
 end-declarations
 
@@ -88,6 +89,8 @@ forall(i in col)
 
 output(n+m+s+1) := string(getsol(ni))
 
+soluzione := string(getsol(ni))
+
 case getprobstat of
   XPRS_OPT: status:="Optimum found"
   XPRS_UNF: status:="Unfinished"
@@ -101,6 +104,10 @@ output(n+m+s+2) := status;
 
 initializations to "mmsheet.xlsx:test"+h+"/Soluzioni-"+w+".xlsx"
   output as 'noindex;BCCO_DMU_' + k
+end-initializations
+
+initializations to "mmsheet.xlsx:test"+h+"/DMU/dmu-"+k+".xlsx"
+  soluzione as 'noindex;BCC_O' + w
 end-initializations
 
 end-model

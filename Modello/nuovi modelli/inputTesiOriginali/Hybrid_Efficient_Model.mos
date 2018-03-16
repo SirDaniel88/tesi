@@ -117,6 +117,8 @@ output(n+m_r*2+2) := string(getsol(Mi))
 
 output(n+m_r*2+3) := string(getsol(t))
 
+soluzione := string(getsol(teta))
+
 case getprobstat of
   XPRS_OPT: status:="Optimum found"
   XPRS_UNF: status:="Unfinished"
@@ -130,6 +132,10 @@ output(n+m_r*2+4) := status;
 
 initializations to "mmsheet.xlsx:test"+h+"/Soluzioni-"+w+".xlsx"
   output as 'noindex;HYBRID_DMU_' + k
+end-initializations
+
+initializations to "mmsheet.xlsx:test"+h+"/DMU/dmu-"+k+".xlsx"
+  soluzione as 'noindex;HYBRID_' + w
 end-initializations
 
 end-model

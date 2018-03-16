@@ -37,6 +37,7 @@ declarations
 	y:  array( row2,col ) of real
 	x:  array( row1,col ) of real
 	output: array(out) of string
+	soluzione: string
 	
 end-declarations
 
@@ -65,6 +66,7 @@ forall(i in row2)
 		output(m + i) := string(getsol(u(i)))
 
 output(m+s+1) := string(getsol(epsilon))
+soluzione := string(getsol(epsilon))
 
 case getprobstat of
   XPRS_OPT: status:="Optimum found"
@@ -79,6 +81,10 @@ output(m+s+2) := status;
 
 initializations to "mmsheet.xlsx:test"+h+"/Soluzioni-"+w+".xlsx"
   output as 'noindex;SBM_DMU_' + k
+end-initializations
+
+initializations to "mmsheet.xlsx:test"+h+"/DMU/dmu-"+k+".xlsx"
+  soluzione as 'noindex;SBM_' + w
 end-initializations
 
 end-model
