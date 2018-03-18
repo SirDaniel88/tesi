@@ -2,11 +2,11 @@ model Radial_MI
 uses "mmxprs"; !gain access to the Xpress-Optimizer solver
 
 parameters
-	h = "1"  
-	t = "2"
-	w = "1"
+	h = 1  
+	w = 1
 	FILE_DATA =  "input-output-" + w + ".txt"
 	k = 2
+	t = h +1
 end-parameters
 
 declarations
@@ -24,11 +24,14 @@ initializations from FILE_DATA
 end-initializations
 
 declarations
-	
 	row1 = 1..m
 	row2 = 1..s
 	col = 1..n
-	lamda: array( col ) of mpvar
+	sol = 1..4
+	lamdahh: array( col ) of mpvar
+	lamdaht: array( col ) of mpvar
+	lamdath: array( col ) of mpvar
+	lamdatt: array( col ) of mpvar
 	
 	y_h:  array( row2,col ) of real
 	x_h:  array( row1,col ) of real
@@ -36,7 +39,12 @@ declarations
 	y_t:  array( row2,col ) of real
 	x_t:  array( row1,col ) of real
 	
-	teta: mpvar
+	teta_hh: mpvar
+	teta_ht: mpvar
+	teta_th: mpvar
+	teta_tt: mpvar
+	
+	output: array(sol) of real
 	
 end-declarations
 
@@ -51,21 +59,76 @@ initializations from "mmsheet.xlsx:Input-Output-" + t + ".xlsx"
 end-initializations
 
 forall(j in row1) do
-	teta * x_h(j,k) >= sum(i in col) x_t(j, i)*lamda(i)
+	vhh1(j):= teta_hh * x_h(j,k) >= sum(i in col) x_h(j, i)*lamdahh(i)
 end-do
 
 forall(j in row1) do
-	y_h(j,k) >= sum(i in col) y_t(j, i)*lamda(i)
+	vhh2(j):= y_h(j,k) >= sum(i in col) y_h(j, i)*lamdahh(i)
 end-do	
 
-sum(i in col) lamda(i) = 1
+vhh3:= sum(i in col) lamdahh(i) = 1
 
 forall(i in col) do
-	lamda(i) >= 0
+	vhh4(i):= lamdahh(i) >= 0
 end-do
 	
-minimize(teta);
+minimize(teta_hh);
 
-writeln(getsol(teta));
+forall(j in row1) do
+	v1ht(j):= teta_ht * x_h(j,k) >= sum(i in col) x_t(j, i)*lamdaht(i)
+end-do
+
+forall(j in row1) do
+	v2ht(j):= y_h(j,k) >= sum(i in col) y_t(j, i)*lamdaht(i)
+end-do	
+
+v3ht:= sum(i in col) lamdaht(i) = 1
+
+forall(i in col) do
+	v4ht:= lamdaht(i) >= 0
+end-do
+	
+minimize(teta_ht);
+
+forall(j in row1) do
+	v1th(j):= teta_th * x_t(j,k) >= sum(i in col) x_h(j, i)*lamdath(i)
+end-do
+
+forall(j in row1) do
+	v2th(j):= y_t(j,k) >= sum(i in col) y_h(j, i)*lamdath(i)
+end-do	
+
+v3th:= sum(i in col) lamdath(i) = 1
+
+forall(i in col) do
+	v4ht:= lamdath(i) >= 0
+end-do
+	
+minimize(teta_th);
+
+forall(j in row1) do
+	vtt1(j):= teta_tt * x_t(j,k) >= sum(i in col) x_t(j, i)*lamdatt(i)
+end-do
+
+forall(j in row1) do
+	vtt2(j):= y_t(j,k) >= sum(i in col) y_t(j, i)*lamdatt(i)
+end-do	
+
+vtt3:= sum(i in col) lamdatt(i) = 1
+
+forall(i in col) do
+	vtt4(i):= lamdatt(i) >= 0
+end-do
+	
+minimize(teta_tt);
+
+output(1) := getsol(teta_hh)
+output(2) := getsol(teta_ht)
+output(3) := getsol(teta_th)
+output(4) := getsol(teta_tt)
+
+initializations to "mmsheet.xlsx:Soluzione-Malmquist-"+h+".xlsx"
+   output as 'noindex;Test'+w+'_DMU_' + k
+end-initializations
 
 end-model
