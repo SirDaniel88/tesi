@@ -3,9 +3,9 @@ uses "mmxprs"; !gain access to the Xpress-Optimizer solver
 
 parameters
 	h = 1  
-	w = 1
+	w = 4
 	FILE_DATA =  "input-output-" + w + ".txt"
-	k = 2
+	k = 1
 	t = h +1
 end-parameters
 
@@ -27,7 +27,8 @@ declarations
 	row1 = 1..m
 	row2 = 1..s
 	col = 1..n
-	sol = 1..4
+	sol = 1..5
+	
 	lamdahh: array( col ) of mpvar
 	lamdaht: array( col ) of mpvar
 	lamdath: array( col ) of mpvar
@@ -62,7 +63,7 @@ forall(j in row1) do
 	vhh1(j):= teta_hh * x_h(j,k) >= sum(i in col) x_h(j, i)*lamdahh(i)
 end-do
 
-forall(j in row1) do
+forall(j in row2) do
 	vhh2(j):= y_h(j,k) >= sum(i in col) y_h(j, i)*lamdahh(i)
 end-do	
 
@@ -78,7 +79,7 @@ forall(j in row1) do
 	v1ht(j):= teta_ht * x_h(j,k) >= sum(i in col) x_t(j, i)*lamdaht(i)
 end-do
 
-forall(j in row1) do
+forall(j in row2) do
 	v2ht(j):= y_h(j,k) >= sum(i in col) y_t(j, i)*lamdaht(i)
 end-do	
 
@@ -94,7 +95,7 @@ forall(j in row1) do
 	v1th(j):= teta_th * x_t(j,k) >= sum(i in col) x_h(j, i)*lamdath(i)
 end-do
 
-forall(j in row1) do
+forall(j in row2) do
 	v2th(j):= y_t(j,k) >= sum(i in col) y_h(j, i)*lamdath(i)
 end-do	
 
@@ -110,7 +111,7 @@ forall(j in row1) do
 	vtt1(j):= teta_tt * x_t(j,k) >= sum(i in col) x_t(j, i)*lamdatt(i)
 end-do
 
-forall(j in row1) do
+forall(j in row2) do
 	vtt2(j):= y_t(j,k) >= sum(i in col) y_t(j, i)*lamdatt(i)
 end-do	
 
@@ -126,6 +127,7 @@ output(1) := getsol(teta_hh)
 output(2) := getsol(teta_ht)
 output(3) := getsol(teta_th)
 output(4) := getsol(teta_tt)
+output(5) := (getsol(teta_ht)*getsol(teta_tt))/(getsol(teta_th)*getsol(teta_hh))
 
 initializations to "mmsheet.xlsx:Soluzione-Malmquist-"+h+".xlsx"
    output as 'noindex;Test'+w+'_DMU_' + k
