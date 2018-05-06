@@ -2,8 +2,8 @@ model Hybrid_Efficient_Model
 uses "mmxprs"; !gain access to the Xpress-Optimizer solver
 
 parameters
-	h = "1"
-	w = "1"
+	h = 1
+	w = 8
 	FILE_DATA =  "input-output-" + w + ".txt"
 	k = 2
 end-parameters
@@ -54,7 +54,7 @@ declarations
 	y_nr:  array( row2_nr,col ) of real
 	x_nr:  array( row1_nr,col ) of real
 	output: array(out) of string
-	
+	soluzione: real
 end-declarations
 
 initializations from "mmsheet.xlsx:Input-Output-"+h+".xlsx"
@@ -117,7 +117,7 @@ output(n+m_r*2+2) := string(getsol(Mi))
 
 output(n+m_r*2+3) := string(getsol(t))
 
-soluzione := string(getsol(teta))
+soluzione := real(getsol(teta))
 
 case getprobstat of
   XPRS_OPT: status:="Optimum found"
@@ -136,6 +136,10 @@ end-initializations
 
 initializations to "mmsheet.xlsx:test"+h+"/DMU/dmu-"+k+".xlsx"
   soluzione as 'noindex;HYBRID_' + w
+end-initializations
+
+initializations to "mmsheet.xlsx:grafici/grafico-dmu-"+k+".xlsx"
+  soluzione as 'noindex;HYBRID_' + (w + (h-1)*9)
 end-initializations
 
 end-model

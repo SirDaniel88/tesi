@@ -2,8 +2,8 @@ model Hybrid_Efficient_Model_No_Radiant
 uses "mmxprs"; !gain access to the Xpress-Optimizer solver
 
 parameters
-	h = "1"
-	w = "1"
+	h = 1
+	w = 1
 	FILE_DATA =  "input-output-" + w + ".txt"
 	k = 2
 end-parameters
@@ -42,7 +42,7 @@ declarations
 	y:  array( row2_r,col ) of real
 	x:  array( row1_r,col ) of real
 	output: array(out) of string
-	soluzione : string
+	soluzione : real
 	
 end-declarations
 
@@ -79,7 +79,7 @@ output(n+2) := string(getsol(Mi))
 
 output(n+3) := string(getsol(t))
 
-soluzione := string(getsol(Teta))
+soluzione := real(getsol(Teta))
 
 case getprobstat of
   XPRS_OPT: status:="Optimum found"
@@ -98,6 +98,10 @@ end-initializations
 
 initializations to "mmsheet.xlsx:test"+h+"/DMU/dmu-"+k+".xlsx"
   soluzione as 'noindex;HYBRID_' + w
+end-initializations
+
+initializations to "mmsheet.xlsx:grafici/grafico-dmu-"+k+".xlsx"
+  soluzione as 'noindex;HYBRID_' + (w + (h-1)*9)
 end-initializations
 
 end-model

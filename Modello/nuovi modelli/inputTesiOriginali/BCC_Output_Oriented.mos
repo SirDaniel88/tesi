@@ -2,8 +2,8 @@ model BCC_Output_Oriented
 uses "mmxprs"; !gain access to the Xpress-Optimizer solver
 
 parameters
-	h = "1"
-	w = "1"
+	h = 1
+	w = 1
 	FILE_DATA =  "input-output-" + w + ".txt"
 	k = 2
 end-parameters
@@ -38,7 +38,7 @@ declarations
 	y:  array( row2,col ) of real
 	x:  array( row1,col ) of real
 	output: array(out) of string
-	soluzione : string
+	soluzione : real
 	
 end-declarations
 
@@ -89,7 +89,7 @@ forall(i in col)
 
 output(n+m+s+1) := string(getsol(ni))
 
-soluzione := string(getsol(ni))
+soluzione := real(getsol(ni))
 
 case getprobstat of
   XPRS_OPT: status:="Optimum found"
@@ -108,6 +108,10 @@ end-initializations
 
 initializations to "mmsheet.xlsx:test"+h+"/DMU/dmu-"+k+".xlsx"
   soluzione as 'noindex;BCC_O' + w
+end-initializations
+
+initializations to "mmsheet.xlsx:grafici/grafico-dmu-"+k+".xlsx"
+  soluzione as 'noindex;BCC_O' + (w + (h-1)*9)
 end-initializations
 
 end-model
