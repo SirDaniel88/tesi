@@ -31,7 +31,6 @@ declarations
 	out = 1..su
 	
 	Teta: mpvar
-	Mi: mpvar
 	Lamda: array( col ) of mpvar
 	t: mpvar
 	
@@ -58,15 +57,13 @@ forall(j in row1_r)
 	Teta * x(j, k) >= sum(i in col) x(j, i) * Lamda(i)
 	
 forall(j in row2_r)
-	Mi * y(j, k) <= sum(i in col) y(j, i) * Lamda(i)
+	y(j, k) <= sum(i in col) y(j, i) * Lamda(i)
 
 Teta <= t
-Mi >= t
+1 >= t
 
 forall(i in col)
 	Lamda(i) >= 0
-
-Mi + uno_s  = 1
 	 
 minimize(Teta)
 
@@ -75,7 +72,7 @@ forall(i in col)
 
 output(n+1) := string(getsol(Teta))
 
-output(n+2) := string(getsol(Mi))
+output(n+2) := string(1)
 
 output(n+3) := string(getsol(t))
 

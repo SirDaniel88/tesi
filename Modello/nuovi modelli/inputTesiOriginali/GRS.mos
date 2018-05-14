@@ -1,0 +1,120 @@
+model GRS_Model
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+parameters
+	h = 1
+	w = 1
+	FILE_DATA =  "input-output-" + w + ".txt"
+	k = 1
+end-parameters
+
+declarations
+	
+	s:integer
+	m:integer
+	n:integer
+	
+end-declarations
+
+initializations from FILE_DATA
+	s
+	m
+	n
+end-initializations
+
+declarations
+	
+	row1 = 1..m
+	row2 = 1..s
+	col = 1..n
+	su = n+m+s+2
+	out = 1..su
+	
+	teta: mpvar
+	lamda: array( col ) of mpvar
+	s_piu: array(row2) of mpvar
+	s_meno: array(row1) of mpvar
+	
+	y:  array( row2,col ) of real
+	x:  array( row1,col ) of real
+	output: array(out) of string
+	soluzione : real
+	
+end-declarations
+
+initializations from "mmsheet.xlsx:Input-Output-" + h + ".xlsx"
+	y as "noindex;Output"+w
+	x as "noindex;Input"+w
+end-initializations
+
+forall(j in row1) do
+	teta*x(j,k)>= sum(i in col) x(j, i)*lamda(i)
+end-do	
+
+forall(j in row2) do
+	sum(i in col)y(j,i)*lamda(i)>=y(j,k)
+end-do
+
+sum(j in col) lamda(j) <= 2
+
+sum(j in col) lamda(j) >= 0.5
+
+forall(j in col) do 
+	lamda(j) >= 0
+end-do
+
+minimize(teta)
+
+if(getsol(teta)=1) then
+	
+	forall(i in row1) do
+		w1(i):= s_meno(i) = teta*x(i,k) - sum(j in col)x(i,j)*lamda(j)
+	end-do
+	
+	forall(i in row2) do
+		w2(i):= s_piu(i) = sum(j in col)y(i,j)*lamda(j) - y(i,k)
+	end-do
+	
+	seco := sum(i in row1) s_meno(i) + sum(i in row2) s_piu(i)	
+	maximize(seco)
+	
+	forall(i in row1)
+		output(i + n) := string(getsol(s_meno(i)))
+	
+	forall(i in row2)
+		output(i + n + m) := string(getsol(s_piu(i)))
+	
+end-if	
+
+forall(i in col)
+	output(i) := string(getsol(lamda(i)))
+
+output(n+m+s+1) := string(getsol(teta))
+
+soluzione := real(getsol(teta))
+
+case getprobstat of
+  XPRS_OPT: status:="Optimum found"
+  XPRS_UNF: status:="Unfinished"
+  XPRS_INF: status:="Infeasible"
+  XPRS_UNB: status:="Unbounded"
+  XPRS_OTH: status:="Failed"
+  else status:="???"
+end-case
+
+output(n+m+s+2) := status;
+
+initializations to "mmsheet.xlsx:test"+h+"/Soluzioni-"+w+".xlsx"
+  output as 'noindex;GRS_DMU_' + k
+end-initializations
+
+
+initializations to "mmsheet.xlsx:test"+h+"/DMU/dmu-"+k+".xlsx"
+  soluzione as 'noindex;GRS_' + w
+end-initializations
+
+initializations to "mmsheet.xlsx:grafici/grafico-dmu-"+k+".xlsx"
+  soluzione as 'noindex;GRS_' + (w + (h-1)*9)
+end-initializations
+
+end-model

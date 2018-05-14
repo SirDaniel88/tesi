@@ -1,0 +1,97 @@
+model BCC_Dual_Model
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+parameters
+	h = 1
+	w = 1
+	FILE_DATA =  "input-output-" + w + ".txt"
+	k = 1
+end-parameters
+
+declarations
+	
+	s:integer
+	m:integer
+	n:integer
+	
+end-declarations
+
+initializations from FILE_DATA
+	s
+	m
+	n
+end-initializations
+
+declarations
+	
+	row1 = 1..m
+	row2 = 1..s
+	col = 1..n
+	su = n+m+s+2
+	out = 1..su
+	
+	v: array( row1 ) of mpvar
+	u: array( row2 ) of mpvar
+	u0: mpvar
+	
+	y:  array( row2,col ) of integer
+	x:  array( row1,col ) of integer
+	output: array(out) of string
+	soluzione : real
+end-declarations
+
+initializations from "mmsheet.xls:Input-Output.xls"
+	y as "noindex;Output"
+	x as "noindex;Input"
+end-initializations
+
+sum(i in row1)v(i) * x(i,k) = 1
+
+forall(j in col)
+	-sum(i in row1)v(i)*x(i,j) + sum(i in row2)u(i)*y(i,j)<= u0
+
+forall(i in row1)
+	v(i)>=0
+	
+forall(i in row2)
+	u(i)>=0
+	 
+z:= sum(i in row2)u(i)*y(i,k) - u0
+
+maximize(z)
+
+forall(i in row1)
+		output(i) := string(getsol(v(i)))
+
+forall(i in row2)
+		output(m + i) := string(getsol(u(i)))
+
+output(m+s+1) := string(getsol(u0))
+output(m+s+2) := string(getsol(z))
+soluzione := real(getsol(z))
+
+case getprobstat of
+  XPRS_OPT: status:="Optimum found"
+  XPRS_UNF: status:="Unfinished"
+  XPRS_INF: status:="Infeasible"
+  XPRS_UNB: status:="Unbounded"
+  XPRS_OTH: status:="Failed"
+  else status:="???"
+end-case
+
+output(n+m+s+2) := status;
+
+initializations to "mmsheet.xlsx:test"+h+"/Soluzioni-"+w+".xlsx"
+  output as 'noindex;BCC_DUAL' + k
+end-initializations
+
+
+initializations to "mmsheet.xlsx:test"+h+"/DMU/dmu-"+k+".xlsx"
+  soluzione as 'noindex;BCC_DUAL' + w
+end-initializations
+
+initializations to "mmsheet.xlsx:grafici/grafico-dmu-"+k+".xlsx"
+  soluzione as 'noindex;BCC_DUAL' + (w + (h-1)*9)
+end-initializations
+
+end-model

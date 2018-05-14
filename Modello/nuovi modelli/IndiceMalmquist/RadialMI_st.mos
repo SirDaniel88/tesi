@@ -46,6 +46,7 @@ declarations
 	teta_tt: mpvar
 	
 	output: array(sol) of real
+	soluzione : real
 	
 end-declarations
 
@@ -129,8 +130,14 @@ output(3) := getsol(teta_th)
 output(4) := getsol(teta_tt)
 output(5) := (getsol(teta_ht)*getsol(teta_tt))/(getsol(teta_th)*getsol(teta_hh))
 
+soluzione := real((getsol(teta_ht)*getsol(teta_tt))/(getsol(teta_th)*getsol(teta_hh)))
+
 initializations to "mmsheet.xlsx:Soluzione-Malmquist-"+h+".xlsx"
    output as 'noindex;Test'+w+'_DMU_' + k
+end-initializations
+
+initializations to "mmsheet.xlsx:../inputTesiOriginali2/grafici/grafico-dmu-"+k+".xlsx"
+  soluzione as 'noindex;MALM_'+ h + '_' + w
 end-initializations
 
 end-model

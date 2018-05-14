@@ -1,0 +1,6 @@
+s: 2
+m_d: 2
+m_nd: 1
+n: 37
+ep: 0.02
+complex_cost: 2000
